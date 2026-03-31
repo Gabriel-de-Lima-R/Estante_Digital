@@ -1,0 +1,235 @@
+================================================================================
+                    REGRAS DE NEGÓCIOS - ESTANTE DIGITAL
+================================================================================
+
+1. VISÃO GERAL
+--------------------------------------------------------------------------------
+O sistema Estante Digital é uma aplicação CLI (Interface de Linha de Comando)
+destinada aos leitores da Biblioteca Municipal. Seu objetivo é digitalizar o
+controle de empréstimos de livros, permitindo que os usuários consultem a
+disponibilidade do acervo, realizem empréstimos e devoluções de forma
+automatizada, eliminando o processo manual e em papel atualmente utilizado.
+
+O sistema será utilizado exclusivamente por leitores. A gestão do acervo e
+administração de bloqueios será tratada separadamente (via arquivo JSON e
+análise do comitê da biblioteca).
+
+
+2. ATORES
+--------------------------------------------------------------------------------------------
+| Ator         | Descrição                                                                 |
+|--------------|---------------------------------------------------------------------------|
+| Leitor       | Usuário final do sistema. Pode consultar o acervo, criar conta, fazer     |
+|              | login, pegar livros emprestados, devolver livros e buscar por títulos.    |
+|--------------|---------------------------------------------------------------------------|
+| Comitê       | (Externo ao sistema) Analisa justificativas de atraso e pode anular,      |
+|              | estender ou aplicar banimentos.                                           |
+
+
+3. REQUISITOS FUNCIONAIS
+--------------------------------------------------------------------------------
+
+RF01 - Tela Inicial (Não Logado)
+   Ao iniciar o sistema, deve ser exibida a logo "Estante Digital" e uma
+   saudação. Em seguida, apresentar as opções:
+   1. Ver acervo disponível
+   2. Fazer login / Criar conta
+   3. Fechar programa
+
+   RF01.1 - Ver acervo disponível
+      Listar todos os itens do acervo que estão com status "disponível".
+      Após a listagem, exibir a mensagem: "Você precisa estar logado para
+      pegar livros emprestados."
+      Retornar ao menu inicial.
+
+   RF01.2 - Fazer login / Criar conta
+      Navegar para a tela de autenticação (RF02).
+
+   RF01.3 - Fechar programa
+      Encerrar a aplicação.
+
+--------------------------------------------------------------------------------
+
+RF02 - Tela de Autenticação
+   Apresentar as opções:
+   1. Fazer login
+   2. Criar conta
+   3. Voltar
+
+   RF02.1 - Fazer login
+      Solicitar e-mail e senha.
+      Se as credenciais forem válidas, navegar para a Tela Principal (RF03).
+      Se inválidas, exibir mensagem "Credenciais incorretas" e permanecer
+      na tela de autenticação.
+
+   RF02.2 - Criar conta
+      Solicitar os seguintes dados, com validações conforme seção 4:
+      - Nome completo
+      - CPF
+      - E-mail
+      - Senha
+      Após preencher corretamente, a conta deve ser criada e armazenada.
+      O sistema deve garantir que não exista outra conta com o mesmo CPF
+      ou mesmo e-mail.
+      Se a criação for bem-sucedida, exibir mensagem de sucesso e retornar
+      à tela inicial.
+
+   RF02.3 - Voltar
+      Retornar à tela inicial.
+
+--------------------------------------------------------------------------------
+
+RF03 - Tela Principal (Usuário Logado)
+   Apresentar as opções:
+   1. Ver acervo disponível
+   2. Pegar livro emprestado
+   3. Devolver livro
+   4. Buscar por livro
+   5. Sair
+
+   RF03.1 - Ver acervo disponível
+      Listar todos os itens do acervo com status "disponível".
+      Exibir mensagem: "Para pegar um livro, utilize a opção 2."
+      Retornar ao menu principal.
+
+   RF03.2 - Pegar livro emprestado
+      Solicitar o nome ou título do livro.
+      Verificar:
+        a) O livro existe no acervo e está disponível?
+        b) O usuário não está bloqueado?
+        c) O usuário não possui nenhum livro emprestado no momento?
+      Se todas as condições forem satisfeitas:
+        - Registrar o empréstimo com data de retirada (data atual) e data
+          de devolução prevista (data atual + 7 dias corridos).
+        - Alterar o status do livro para "emprestado".
+        - Exibir mensagem de sucesso.
+      Caso contrário, exibir mensagem específica do motivo da falha:
+        - "Livro indisponível"
+        - "Usuário bloqueado"
+        - "Você já possui um livro emprestado. Devolva-o antes de pegar outro."
+
+   RF03.3 - Devolver livro
+      Se o usuário possuir um livro emprestado:
+        - Exibir os dados do livro (título, data de retirada, data prevista).
+        - Perguntar: "Deseja devolver este livro? (S/N)"
+        Se resposta for "S":
+          - Calcular a diferença entre a data atual e a data prevista.
+          - Se a devolução ocorrer dentro do prazo (até a data prevista):
+              * Registrar a devolução.
+              * Alterar status do livro para "disponível".
+              * Exibir "Obrigado pela devolução!"
+          - Se a devolução ocorrer após o prazo:
+              * Solicitar uma justificativa (texto livre).
+              * Registrar a devolução com a justificativa.
+              * Bloquear o usuário por 7 dias corridos a partir da data atual.
+              * Exibir mensagem de que o usuário está bloqueado.
+        Se o usuário não tiver livros emprestados:
+          Exibir "Você não possui livros emprestados no momento."
+
+   RF03.4 - Buscar por livro
+      Solicitar termo de busca (pode ser parte do título).
+      Listar todos os itens do acervo cujo título contenha o termo informado
+      (case insensitive), mostrando para cada um:
+        - Título
+        - Tipo (livro, revista, enciclopédia)
+        - Gênero/estilo (quando aplicável)
+        - Status (disponível ou emprestado)
+      Caso nenhum item seja encontrado, exibir "Nenhum item encontrado."
+
+   RF03.5 - Sair
+      Encerrar a sessão do usuário (logout) e retornar à tela inicial.
+
+--------------------------------------------------------------------------------
+
+4. VALIDAÇÕES DE CADASTRO (RF02.2)
+--------------------------------------------------------------------------------
+| Campo        | Regra de Validação                                                |
+|--------------|-------------------------------------------------------------------|
+| Nome completo| Mínimo de 3 caracteres.                                           |
+|--------------|-------------------------------------------------------------------|
+| CPF          | Exatamente 11 dígitos numéricos.                                  |
+|--------------|-------------------------------------------------------------------|
+| E-mail       | Deve conter "@" seguido de um domínio pessoal (ex: gmail.com,     |
+|              | hotmail.com, yahoo.com.br etc). Domínios corporativos/privados    |
+|              | são proibidos. O e-mail não pode estar associado a outra conta.   |
+|--------------|-------------------------------------------------------------------|
+| Senha        | Mínimo de 4 caracteres. Deve conter pelo menos uma letra e um     |
+|              | número.                                                           |
+
+
+5. REGRAS DE NEGÓCIO
+--------------------------------------------------------------------------------
+RN01 - Um usuário pode ter no máximo um empréstimo ativo por vez.
+RN02 - O prazo padrão para devolução é de 7 dias corridos a partir da data de
+      retirada.
+RN03 - Devoluções atrasadas resultam em bloqueio automático de 7 dias corridos,
+      contados a partir da data da devolução.
+RN04 - O bloqueio impede o usuário de realizar novos empréstimos até a data de
+      desbloqueio.
+RN05 - A justificativa de atraso é registrada, mas sua análise e eventuais
+      ajustes no bloqueio são feitos externamente pelo comitê da biblioteca.
+RN06 - O acervo é composto por itens de diferentes tipos: livros (com gênero/
+      estilo), revistas e enciclopédias.
+RN07 - Os dados do acervo são fornecidos em um arquivo JSON (externo ao escopo
+      deste sistema, mas deve ser consumido).
+
+
+6. ENTIDADES DE DADOS (Esboço)
+--------------------------------------------------------------------------------
+USUÁRIO
+  - id (único)
+  - nomeCompleto
+  - cpf (único)
+  - email (único)
+  - senha (armazenada de forma segura)
+  - livroEmPosse (pode ser nula)
+  - bloqueado (true/false)
+  - dataDeDesbloqueio (data, pode ser nula)
+
+ITEM (Acervo)
+  - id
+  - titulo
+  - Autor
+  - tipo (LIVRO, REVISTA, ENCICLOPEDIA)
+  - genero (opcional, para livros)
+  - status (DISPONIVEL, EMPRESTADO)
+
+EMPRESTIMO
+  - id
+  - usuarioId
+  - itemId
+  - dataRetirada
+  - dataPrevistaDevolucao
+  - dataDevolucaoReal (nula se ainda não devolvido)
+  - justificativaAtraso (opcional)
+
+
+7. PREMISSAS E DEPENDÊNCIAS
+--------------------------------------------------------------------------------
+- O arquivo JSON com o acervo será fornecido separadamente e estará disponível
+  no momento da execução do sistema.
+- Não há funcionalidades para bibliotecários ou administradores neste sistema.
+- O comitê da biblioteca tem acesso externo para modificar bloqueios/banimentos
+  (essa integração não faz parte do escopo).
+- O sistema não gerencia multas financeiras; apenas bloqueios temporários.
+- A persistência de dados (usuários, empréstimos, histórico) deve ser mantida
+  entre execuções (sugestão: arquivos JSON ou banco de dados embutido).
+
+
+8. FLUXOS RESUMIDOS
+--------------------------------------------------------------------------------
+FLUXO PRINCIPAL - EMPRÉSTIMO COM SUCESSO:
+  Tela Inicial → Login → Tela Principal → Pegar livro emprestado →
+  Informar título → (livro disponível e usuário apto) → Empréstimo registrado →
+  Confirmação.
+
+FLUXO ALTERNATIVO - DEVOLUÇÃO ATRASADA:
+  Tela Inicial → Login → Tela Principal → Devolver livro →
+  Confirmação → (atraso detectado) → Solicitar justificativa →
+  Registrar devolução → Bloquear usuário por 7 dias.
+
+FLUXO DE EXCEÇÃO - TENTATIVA DE EMPRÉSTIMO COM LIVRO INDISPONÍVEL:
+  Tela Inicial → Login → Tela Principal → Pegar livro emprestado →
+  Informar título → (livro emprestado) → Mensagem de indisponibilidade.
+
+================================================================================
