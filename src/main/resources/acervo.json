@@ -1,0 +1,597 @@
+[
+  {
+    "id": 1,
+    "titulo": "Dom Casmurro",
+    "autor": "Machado de Assis",
+    "tipo": "LIVRO",
+    "genero": "Realismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1899
+  },
+  {
+    "id": 2,
+    "titulo": "Memórias Póstumas de Brás Cubas",
+    "autor": "Machado de Assis",
+    "tipo": "LIVRO",
+    "genero": "Realismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1881
+  },
+  {
+    "id": 3,
+    "titulo": "O Cortiço",
+    "autor": "Aluísio Azevedo",
+    "tipo": "LIVRO",
+    "genero": "Naturalismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1890
+  },
+  {
+    "id": 4,
+    "titulo": "Grande Sertão: Veredas",
+    "autor": "Guimarães Rosa",
+    "tipo": "LIVRO",
+    "genero": "Modernismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1956
+  },
+  {
+    "id": 5,
+    "titulo": "Vidas Secas",
+    "autor": "Graciliano Ramos",
+    "tipo": "LIVRO",
+    "genero": "Regionalismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1938
+  },
+  {
+    "id": 6,
+    "titulo": "A Hora da Estrela",
+    "autor": "Clarice Lispector",
+    "tipo": "LIVRO",
+    "genero": "Ficção Psicológica",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1977
+  },
+  {
+    "id": 7,
+    "titulo": "Capitães da Areia",
+    "autor": "Jorge Amado",
+    "tipo": "LIVRO",
+    "genero": "Modernismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1937
+  },
+  {
+    "id": 8,
+    "titulo": "Iracema",
+    "autor": "José de Alencar",
+    "tipo": "LIVRO",
+    "genero": "Romantismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1865
+  },
+  {
+    "id": 9,
+    "titulo": "Macunaíma",
+    "autor": "Mário de Andrade",
+    "tipo": "LIVRO",
+    "genero": "Modernismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1928
+  },
+  {
+    "id": 10,
+    "titulo": "Quarto de Despejo",
+    "autor": "Carolina Maria de Jesus",
+    "tipo": "LIVRO",
+    "genero": "Autobiografia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1960
+  },
+  {
+    "id": 11,
+    "titulo": "Triste Fim de Policarpo Quaresma",
+    "autor": "Lima Barreto",
+    "tipo": "LIVRO",
+    "genero": "Pré-Modernismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1911
+  },
+  {
+    "id": 12,
+    "titulo": "O Ateneu",
+    "autor": "Raul Pompeia",
+    "tipo": "LIVRO",
+    "genero": "Impressionismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1888
+  },
+  {
+    "id": 13,
+    "titulo": "Senhora",
+    "autor": "José de Alencar",
+    "tipo": "LIVRO",
+    "genero": "Romantismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1875
+  },
+  {
+    "id": 14,
+    "titulo": "Auto da Compadecida",
+    "autor": "Ariano Suassuna",
+    "tipo": "LIVRO",
+    "genero": "Teatro",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1955
+  },
+  {
+    "id": 15,
+    "titulo": "Morte e Vida Severina",
+    "autor": "João Cabral de Melo Neto",
+    "tipo": "LIVRO",
+    "genero": "Poesia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1955
+  },
+  {
+    "id": 16,
+    "titulo": "O Tempo e o Vento",
+    "autor": "Érico Veríssimo",
+    "tipo": "LIVRO",
+    "genero": "Ficção Histórica",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1949
+  },
+  {
+    "id": 17,
+    "titulo": "Memórias de um Sargento de Milícias",
+    "autor": "Manuel Antônio de Almeida",
+    "tipo": "LIVRO",
+    "genero": "Romantismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1852
+  },
+  {
+    "id": 18,
+    "titulo": "A Moreninha",
+    "autor": "Joaquim Manuel de Macedo",
+    "tipo": "LIVRO",
+    "genero": "Romantismo",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1844
+  },
+  {
+    "id": 19,
+    "titulo": "Os Sertões",
+    "autor": "Euclides da Cunha",
+    "tipo": "LIVRO",
+    "genero": "Não-Ficção",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1902
+  },
+  {
+    "id": 20,
+    "titulo": "Incidente em Antares",
+    "autor": "Érico Veríssimo",
+    "tipo": "LIVRO",
+    "genero": "Realismo Fantástico",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1971
+  },
+  {
+    "id": 21,
+    "titulo": "Veja",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Notícias",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1968
+  },
+  {
+    "id": 22,
+    "titulo": "Vogue Brasil",
+    "editora_responsavel": "Edições Globo Condé Nast",
+    "tipo": "REVISTA",
+    "genero": "Moda",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1975
+  },
+  {
+    "id": 23,
+    "titulo": "Superinteressante",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Ciência",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1987
+  },
+  {
+    "id": 24,
+    "titulo": "Quatro Rodas",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Carros",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1960
+  },
+  {
+    "id": 25,
+    "titulo": "Cláudia",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Estilo de Vida",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1961
+  },
+  {
+    "id": 26,
+    "titulo": "Época",
+    "editora_responsavel": "Editora Globo",
+    "tipo": "REVISTA",
+    "genero": "Política",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1998
+  },
+  {
+    "id": 27,
+    "titulo": "Caras",
+    "editora_responsavel": "Editora Perfil",
+    "tipo": "REVISTA",
+    "genero": "Celebridades",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1993
+  },
+  {
+    "id": 28,
+    "titulo": "Exame",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Economia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1967
+  },
+  {
+    "id": 29,
+    "titulo": "Globo Rural",
+    "editora_responsavel": "Editora Globo",
+    "tipo": "REVISTA",
+    "genero": "Agronegócio",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1985
+  },
+  {
+    "id": 30,
+    "titulo": "Placar",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Esportes",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1970
+  },
+  {
+    "id": 31,
+    "titulo": "Enciclopédia Barsa",
+    "editora_responsavel": "Encyclopaedia Britannica do Brasil",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 18,
+    "ano_edicao": 2010
+  },
+  {
+    "id": 32,
+    "titulo": "Encyclopædia Britannica",
+    "editora_responsavel": "Encyclopædia Britannica, Inc.",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Inglês",
+    "status": "DISPONIVEL",
+    "volumes": 32,
+    "ano_edicao": 2010
+  },
+  {
+    "id": 33,
+    "titulo": "Grande Enciclopédia Larousse Cultural",
+    "editora_responsavel": "Editora Nova Cultural",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 24,
+    "ano_edicao": 1998
+  },
+  {
+    "id": 34,
+    "titulo": "Enciclopédia Mirador Internacional",
+    "editora_responsavel": "Encyclopaedia Britannica do Brasil",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 20,
+    "ano_edicao": 1995
+  },
+  {
+    "id": 35,
+    "titulo": "Enciclopédia Delta Larousse",
+    "editora_responsavel": "Editora Delta",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 15,
+    "ano_edicao": 1970
+  },
+  {
+    "id": 36,
+    "titulo": "Coleção Conhecer",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 10,
+    "ano_edicao": 1966
+  },
+  {
+    "id": 37,
+    "titulo": "Enciclopédia de Literatura Brasileira",
+    "editora_responsavel": "Afrânio Coutinho / Global Editora",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 2,
+    "ano_edicao": 2001
+  },
+  {
+    "id": 38,
+    "titulo": "The World Book Encyclopedia",
+    "editora_responsavel": "World Book, Inc.",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Inglês",
+    "status": "DISPONIVEL",
+    "volumes": 22,
+    "ano_edicao": 2022
+  },
+  {
+    "id": 39,
+    "titulo": "Enciclopédia Abril",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 12,
+    "ano_edicao": 1971
+  },
+  {
+    "id": 40,
+    "titulo": "Grande Enciclopédia Portuguesa e Brasileira",
+    "editora_responsavel": "Editorial Enciclopédia",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 40,
+    "ano_edicao": 1960
+  },
+  {
+    "id": 41,
+    "titulo": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1943
+  },
+  {
+    "id": 42,
+    "titulo": "Reinações de Narizinho",
+    "autor": "Monteiro Lobato",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1931
+  },
+  {
+    "id": 43,
+    "titulo": "O Saci",
+    "autor": "Monteiro Lobato",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1921
+  },
+  {
+    "id": 44,
+    "titulo": "Branca de Neve e os Sete Anões",
+    "autor": "Irmãos Grimm",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1812
+  },
+  {
+    "id": 45,
+    "titulo": "A Pequena Sereia",
+    "autor": "Hans Christian Andersen",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1837
+  },
+  {
+    "id": 46,
+    "titulo": "O Patinho Feio",
+    "autor": "Hans Christian Andersen",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1843
+  },
+  {
+    "id": 47,
+    "titulo": "A Princesa e a Ervilha",
+    "autor": "Hans Christian Andersen",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1835
+  },
+  {
+    "id": 48,
+    "titulo": "Chapeuzinho Vermelho",
+    "autor": "Irmãos Grimm",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1812
+  },
+  {
+    "id": 49,
+    "titulo": "João e Maria",
+    "autor": "Irmãos Grimm",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1812
+  },
+  {
+    "id": 50,
+    "titulo": "A Bela e a Fera",
+    "autor": "Jeanne-Marie Leprince de Beaumont",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1756
+  },
+  {
+    "id": 51,
+    "titulo": "Pinóquio",
+    "autor": "Carlo Collodi",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1883
+  },
+  {
+    "id": 52,
+    "titulo": "Alice no País das Maravilhas",
+    "autor": "Lewis Carroll",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1865
+  },
+  {
+    "id": 53,
+    "titulo": "Peter Pan",
+    "autor": "J.M. Barrie",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1904
+  },
+  {
+    "id": 54,
+    "titulo": "O Mágico de Oz",
+    "autor": "L. Frank Baum",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1900
+  },
+  {
+    "id": 55,
+    "titulo": "Menina Bonita do Laço de Fita",
+    "autor": "Ana Maria Machado",
+    "tipo": "LIVRO",
+    "genero": "Infantil",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1986
+  },
+  {
+    "id": 56,
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "tipo": "LIVRO",
+    "genero": "Distopia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1949
+  },
+  {
+    "id": 57,
+    "titulo": "O Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "tipo": "LIVRO",
+    "genero": "Fantasia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1937
+  },
+  {
+    "id": 58,
+    "titulo": "Harry Potter e a Pedra Filosofal",
+    "autor": "J.K. Rowling",
+    "tipo": "LIVRO",
+    "genero": "Fantasia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1997
+  },
+  {
+    "id": 59,
+    "titulo": "O Código Da Vinci",
+    "autor": "Dan Brown",
+    "tipo": "LIVRO",
+    "genero": "Suspense",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2003
+  },
+  {
+    "id": 60,
+    "titulo": "A Revolução dos Bichos",
+    "autor": "George Orwell",
+    "tipo": "LIVRO",
+    "genero": "Fábula",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1945
+  },
+  {
+    "id": 61,
+    "titulo": "Introdução à Programação com Java",
+    "autor": "Deitel & Deitel",
+    "tipo": "LIVRO",
+    "genero": "Tecnologia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2015
+  },
+  {
+    "id": 62,
+    "titulo": "Matemática Básica",
+    "autor": "Gelson Iezzi",
+    "tipo": "LIVRO",
+    "genero": "Educação",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2010
+  },
+  {
+    "id": 63,
+    "titulo": "Superinteressante - Edição 400",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Ciência",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2023
+  },
+  {
+    "id": 64,
+    "titulo": "Veja - Edição 2800",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Notícias",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2024
+  },
+  {
+    "id": 65,
+    "titulo": "Bíblia Sagrada",
+    "autor": "Diversos autores",
+    "tipo": "LIVRO",
+    "genero": "Religioso",
+    "status": "DISPONIVEL",
+    "ano_publicacao": -500
+  }
+]
