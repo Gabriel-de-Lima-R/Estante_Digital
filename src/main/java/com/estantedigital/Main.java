@@ -29,7 +29,7 @@ public class Main {
                     break;
                 }
                 case "2", "02" -> {
-                    menuLoginECriarConta();
+                    menuAutenticacao();
                     aguarde();
                     break;
                 }
@@ -45,8 +45,59 @@ public class Main {
         }
     }
 
-    private static void menuLoginECriarConta() {
-        System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
+    private static void menuAutenticacao() {
+        boolean ativoAuten = true;
+        while (ativoAuten) {
+            System.out.println(CentralMenus.MENU_AUTENTICACAO);
+            String opcaoAuten = leitor.nextLine();
+            limparTerminal();
+            switch (opcaoAuten) {
+                case "1", "01" ->
+                {
+                    acervoDisponivel();
+                    aguarde();
+                    break;
+                }
+                case "2", "02" -> {
+                    menuCriarConta();
+                    aguarde();
+                    break;
+                }
+                case "3", "03" -> {
+                    System.out.println("Precione ENTER Para Voltar!");
+                    leitor.nextLine();
+                    ativoAuten = false;
+                    break;
+                }
+                default -> {
+                    System.out.println(CentralMenus.OPCAO_INVALIDA);
+                }
+            }
+        }
+
+    }
+
+    private static void menuCriarConta() {
+        System.out.println(CentralMenus.TITULO_CADASTRO + "\n");
+        System.out.println("Prencha corretamente os dados a seguir:\n");
+
+        while (true) {
+
+            System.out.print("Email: ");
+
+            String email = leitor.nextLine();
+
+            if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
+                break;
+            }
+        }
+        System.out.print("Senha: ");
+        String senha = leitor.nextLine();
+        System.out.print("Nome completo: ");
+        String nomeCompleto = leitor.nextLine();
+        System.out.print("CPF (apenas números): ");
+        String cpf = leitor.nextLine();
+
     }
 
     private static void acervoDisponivel() {

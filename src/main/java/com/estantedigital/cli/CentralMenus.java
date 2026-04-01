@@ -43,7 +43,8 @@ public class CentralMenus {
 
     public static final String MENU_INICIAL = """
             
-            OPÇÕES: -----------------------
+            ============ OPÇÕES ============
+            
             [1] - Ver Acervo Disponível
             [2] - Fazer Login / Criar Conta
             [3] - Fechar Programa
@@ -57,6 +58,21 @@ public class CentralMenus {
 
     public static final String MENSAGEM_PRECISA_LOGAR = "Você precisa estar logado para pegar livros emprestados.";
     public static final String ACERVO_DISPONIVEL_TITULO = "\n=== ACERVO DISPONÍVEL ===\n";
+
+    // ==================== MENU DE AUTENTICAÇÃO ====================
+
+    public static final String MENU_AUTENTICACAO = """
+            
+            ========== ACESSO ==========
+            
+            [1] - Fazer Login
+            [2] - Criar Conta
+            [3] - Voltar
+            
+            Escolha uma opção: """;
+
+    public static final String TITULO_LOGIN = "\n=== LOGIN ===\n";
+    public static final String TITULO_CADASTRO = "\n=== CRIAR CONTA ===\n";
 
 
 
