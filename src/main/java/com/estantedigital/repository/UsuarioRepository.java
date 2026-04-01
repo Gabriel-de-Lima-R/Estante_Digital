@@ -1,0 +1,95 @@
+package com.estantedigital.repository;
+
+import com.estantedigital.model.Usuario;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UsuarioRepository {
+    private static final String ARQUIVO_USUARIOS = "src/main/resources/usuarios.json";
+    private Gson gson;
+    private List<Usuario> listaDeUsuarios = new ArrayList<>();
+    private long proximoId = 1;  // contador independente
+
+    public UsuarioRepository() {
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.listaDeUsuarios = new ArrayList<>();
+        carregarDoArquivo();
+    }
+
+    private void carregarDoArquivo() {
+        File arquivo = new File(ARQUIVO_USUARIOS);
+
+        if (!arquivo.exists()) {
+            System.out.println("Arquivo " + ARQUIVO_USUARIOS + " não encontrado. Será criado ao salvar.");
+            return;
+        }
+
+        try (FileReader reader = new FileReader(arquivo)) {
+            Type tipoDaLista = new TypeToken<List<Usuario>>(){}.getType();
+            List<Usuario> carregados = gson.fromJson(reader, tipoDaLista);
+
+            if (carregados != null) {
+                listaDeUsuarios = carregados;
+                System.out.println("Carregados " + listaDeUsuarios.size() + " usuário(s) do arquivo.");
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar usuários: " + e.getMessage());
+        }
+    }
+
+    private void salvarNoArquivo() {
+        try (FileWriter writer = new FileWriter(ARQUIVO_USUARIOS)) {
+            gson.toJson(listaDeUsuarios, writer);
+            System.out.println("Usuário salvos com sucesso em " + ARQUIVO_USUARIOS);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar usuários: " + e.getMessage());
+        }
+    }
+
+    private long encontrarProximoId() {
+        if (listaDeUsuarios.isEmpty()) {
+            return 1;
+        }
+
+        long maiorId = 0;
+        for (Usuario usuario : listaDeUsuarios) {
+            if (usuario.getId() > maiorId) {
+                maiorId = usuario.getId();
+            }
+        }
+        return maiorId + 1;
+    }
+
+    public void adicionar(Usuario usuario) {
+        long novoId = encontrarProximoId();
+        usuario.setId(novoId);
+        listaDeUsuarios.add(usuario);
+        salvarNoArquivo();
+        System.out.println("Usuário " + usuario.getNomeCompleto() + " adicionado com ID " + novoId);
+    }
+
+
+    public void salvar(Usuario usuario) {
+        usuario.setId(proximoId);
+        proximoId++;
+        listaDeUsuarios.add(usuario);
+    }
+
+    public long getProximoId() {
+        return proximoId;
+    }
+
+    public List<Usuario> listarTodos() {
+        return listaDeUsuarios;
+    }
+
+}
