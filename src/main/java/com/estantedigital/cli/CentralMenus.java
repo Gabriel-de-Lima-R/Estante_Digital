@@ -33,9 +33,11 @@ public class CentralMenus {
       '''''''''''''''''';''';''''''''''''''''''
                          '''""";
 
-    // ==================== SAUDAÇÕES ====================
+    // ==================== SAUDAÇÕES e ESPERA ====================
 
     public static final String SAUDACAO = "Bem-vindo(a) à Estante Digital — seu acesso ao acervo completo da Biblioteca Municipal.";
+
+    public static final String PRECIONE_ENTER = "Precione ENTER para Continuar!";
 
     // ==================== MENU INICIAL ====================
 
