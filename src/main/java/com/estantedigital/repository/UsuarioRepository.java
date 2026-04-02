@@ -16,7 +16,7 @@ import java.util.List;
 public class UsuarioRepository {
     private static final String ARQUIVO_USUARIOS = "src/main/resources/usuarios.json";
     private Gson gson;
-    private List<Usuario> listaDeUsuarios = new ArrayList<>();
+    private static List<Usuario> listaDeUsuarios = new ArrayList<>();
     private long proximoId = 1;  // contador independente
 
     public UsuarioRepository() {
@@ -90,6 +90,40 @@ public class UsuarioRepository {
 
     public List<Usuario> listarTodos() {
         return listaDeUsuarios;
+    }
+
+    public static Usuario buscarPorEmail(String email) {
+        if (email == null) {
+            return null;
+        }
+
+        for (Usuario usuario : listaDeUsuarios) {
+            if (usuario.getEmail() != null && usuario.getEmail().equalsIgnoreCase(email)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public static Usuario buscarPorCpf(String cpf) {
+        if (cpf == null) {
+            return null;
+        }
+
+        for (Usuario usuario : listaDeUsuarios) {
+            if (usuario.getCpf() != null && usuario.getCpf().equals(cpf)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public static boolean emailExiste(String email) {
+        return buscarPorEmail(email) != null;
+    }
+
+    public static boolean cpfExiste(String cpf) {
+        return buscarPorCpf(cpf) != null;
     }
 
 }

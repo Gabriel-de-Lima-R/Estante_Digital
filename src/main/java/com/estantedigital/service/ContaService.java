@@ -1,6 +1,7 @@
 package com.estantedigital.service;
 
 import com.estantedigital.cli.CentralMenus;
+import com.estantedigital.repository.UsuarioRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,10 +81,16 @@ public class ContaService {
     public static boolean validaEmail(String email) {
         if (email == null) { return false; }
 
+        if (UsuarioRepository.emailExiste(email)) {
+            System.out.println("Esse email já existe!! Crie uma conta com novo email!!");
+            return false;
+        }
+
         if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
             dados.put("email", email);
             return true;
         }
+
         System.out.println("Email inválido! Use @gmail.com ou @hotmail.com");
         return false;
     }
@@ -107,6 +114,11 @@ public class ContaService {
 
         if (cpf.length() != 11) {
             System.out.println("CPF inválido! Deve conter exatamente 11 números.");
+            return false;
+        }
+
+        if (UsuarioRepository.cpfExiste(cpf)) {
+            System.out.println("Esse cpf já está sendo usado!!");
             return false;
         }
 

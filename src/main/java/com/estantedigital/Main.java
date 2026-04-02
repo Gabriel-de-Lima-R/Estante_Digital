@@ -82,7 +82,13 @@ public class Main {
 
     private static void menuCriarConta() {
         Map<String, String> dadosUsuario = ContaService.criandoNovaConta();
-        Usuario novoUsuario = new Usuario(dadosUsuario.get("nomeCompleto"), dadosUsuario.get("cpf"), dadosUsuario.get("email"), dadosUsuario.get("senha"));
+        // Criar o usuário
+        Usuario novoUsuario = new Usuario(
+                dadosUsuario.get("nomeCompleto"),
+                dadosUsuario.get("cpf"),
+                dadosUsuario.get("email"),
+                dadosUsuario.get("senha")
+        );
 
         System.out.println(novoUsuario);
 
