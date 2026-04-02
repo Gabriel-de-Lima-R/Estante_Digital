@@ -1,7 +1,10 @@
 package com.estantedigital;
 
 import com.estantedigital.cli.CentralMenus;
+import com.estantedigital.model.Usuario;
+import com.estantedigital.service.ContaService;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -78,25 +81,11 @@ public class Main {
     }
 
     private static void menuCriarConta() {
-        System.out.println(CentralMenus.TITULO_CADASTRO + "\n");
-        System.out.println("Prencha corretamente os dados a seguir:\n");
+        Map<String, String> dadosUsuario = ContaService.criandoNovaConta();
+        Usuario novoUsuario = new Usuario(dadosUsuario.get("nomeCompleto"), dadosUsuario.get("cpf"), dadosUsuario.get("email"), dadosUsuario.get("senha"));
 
-        while (true) {
+        System.out.println(novoUsuario);
 
-            System.out.print("Email: ");
-
-            String email = leitor.nextLine();
-
-            if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
-                break;
-            }
-        }
-        System.out.print("Senha: ");
-        String senha = leitor.nextLine();
-        System.out.print("Nome completo: ");
-        String nomeCompleto = leitor.nextLine();
-        System.out.print("CPF (apenas números): ");
-        String cpf = leitor.nextLine();
 
     }
 
