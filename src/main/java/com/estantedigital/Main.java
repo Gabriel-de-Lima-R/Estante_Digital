@@ -2,13 +2,16 @@ package com.estantedigital;
 
 import com.estantedigital.cli.CentralMenus;
 import com.estantedigital.model.Usuario;
+import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner leitor = new Scanner(System.in);
+    public static UsuarioRepository usuarioDB = new UsuarioRepository();
 
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
@@ -33,7 +36,6 @@ public class Main {
                 }
                 case "2", "02" -> {
                     menuAutenticacao();
-                    aguarde();
                     break;
                 }
                 case "3", "03" -> {
@@ -57,7 +59,7 @@ public class Main {
             switch (opcaoAuten) {
                 case "1", "01" ->
                 {
-                    acervoDisponivel();
+                    ativoAuten = menuLogin();
                     aguarde();
                     break;
                 }
@@ -67,8 +69,6 @@ public class Main {
                     break;
                 }
                 case "3", "03" -> {
-                    System.out.println("Precione ENTER Para Voltar!");
-                    leitor.nextLine();
                     ativoAuten = false;
                     break;
                 }
@@ -80,9 +80,19 @@ public class Main {
 
     }
 
+    private static boolean menuLogin() {
+        Usuario usuarioLogado = ContaService.fazendoLogin(usuarioDB);
+
+        if (usuarioLogado != null) {
+           menuTelaPrincipal(usuarioLogado);
+           return false; // depois de sair da tela principal, o usuário retorna a tela inicial, útil pra logouts
+        } else { return true; }
+    }
+
     private static void menuCriarConta() {
         Map<String, String> dadosUsuario = ContaService.criandoNovaConta();
-        // Criar o usuário
+
+        // cria o usuário
         Usuario novoUsuario = new Usuario(
                 dadosUsuario.get("nomeCompleto"),
                 dadosUsuario.get("cpf"),
@@ -90,9 +100,13 @@ public class Main {
                 dadosUsuario.get("senha")
         );
 
-        System.out.println(novoUsuario);
+        usuarioDB.adicionar(novoUsuario);
 
+    }
 
+    private static void menuTelaPrincipal(Usuario usuarioAtual) {
+        System.out.println("Usuário logado: " + usuarioAtual.getNomeCompleto());
+        System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
     }
 
     private static void acervoDisponivel() {

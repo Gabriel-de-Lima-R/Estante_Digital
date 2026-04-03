@@ -49,7 +49,6 @@ public class UsuarioRepository {
     private void salvarNoArquivo() {
         try (FileWriter writer = new FileWriter(ARQUIVO_USUARIOS)) {
             gson.toJson(listaDeUsuarios, writer);
-            System.out.println("Usuário salvos com sucesso em " + ARQUIVO_USUARIOS);
         } catch (IOException e) {
             System.err.println("Erro ao salvar usuários: " + e.getMessage());
         }
@@ -74,7 +73,8 @@ public class UsuarioRepository {
         usuario.setId(novoId);
         listaDeUsuarios.add(usuario);
         salvarNoArquivo();
-        System.out.println("Usuário " + usuario.getNomeCompleto() + " adicionado com ID " + novoId);
+        System.out.println("Usuário " + usuario.getNomeCompleto() +
+                " criado com sucesso " + "(ID #" + novoId + ")");
     }
 
 

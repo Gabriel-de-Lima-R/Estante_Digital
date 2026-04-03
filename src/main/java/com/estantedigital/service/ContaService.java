@@ -1,6 +1,7 @@
 package com.estantedigital.service;
 
 import com.estantedigital.cli.CentralMenus;
+import com.estantedigital.model.Usuario;
 import com.estantedigital.repository.UsuarioRepository;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class ContaService {
 
     public static Map<String, String> criandoNovaConta() {
 
-        System.out.println(CentralMenus.TITULO_CADASTRO + "\n");
+        System.out.println(CentralMenus.TITULO_CADASTRO);
         System.out.println("Preencha corretamente os dados a seguir:\n");
 
         // coleta do e-mail corretamente!
@@ -32,7 +33,7 @@ public class ContaService {
         // coleta senha corretamente!
         String senha;
         while (true) {
-            System.out.println("Senha: ");
+            System.out.print("Senha: ");
             senha = leitor.nextLine();
             if (validaSenha(senha)) {
                 dados.put("senha", senha);
@@ -123,6 +124,27 @@ public class ContaService {
         }
 
         return true;
+    }
+
+    public static Usuario fazendoLogin(UsuarioRepository repository) {
+        System.out.println(CentralMenus.TITULO_LOGIN);
+        System.out.println("Preencha corretamente as credenciais:\n");
+        System.out.print("Email: ");
+        String emailDigitado = leitor.nextLine();
+        System.out.print("Senha: ");
+        String senhaDigitada = leitor.nextLine();
+
+        Usuario usuario = UsuarioRepository.buscarPorEmail(emailDigitado);
+
+        // verifica se o usuário existe e se a senha está correta
+        if (usuario != null && usuario.getSenha().equals(senhaDigitada)) {
+            System.out.println("\nLogin realizado com sucesso!");
+            return usuario;
+        } else {
+            System.out.println("Credenciais Inválidas!! Por favor, tente novamente!!");
+            return null;
+        }
+
     }
 
 }
