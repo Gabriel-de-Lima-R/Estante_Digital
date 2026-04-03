@@ -1,11 +1,17 @@
 package com.estantedigital;
 
 import com.estantedigital.cli.CentralMenus;
+import com.estantedigital.model.Usuario;
+import com.estantedigital.repository.UsuarioRepository;
+import com.estantedigital.service.ContaService;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner leitor = new Scanner(System.in);
+    public static UsuarioRepository usuarioDB = new UsuarioRepository();
 
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
@@ -29,8 +35,7 @@ public class Main {
                     break;
                 }
                 case "2", "02" -> {
-                    menuLoginECriarConta();
-                    aguarde();
+                    menuAutenticacao();
                     break;
                 }
                 case "3", "03" -> {
@@ -45,7 +50,62 @@ public class Main {
         }
     }
 
-    private static void menuLoginECriarConta() {
+    private static void menuAutenticacao() {
+        boolean ativoAuten = true;
+        while (ativoAuten) {
+            System.out.println(CentralMenus.MENU_AUTENTICACAO);
+            String opcaoAuten = leitor.nextLine();
+            limparTerminal();
+            switch (opcaoAuten) {
+                case "1", "01" ->
+                {
+                    ativoAuten = menuLogin();
+                    aguarde();
+                    break;
+                }
+                case "2", "02" -> {
+                    menuCriarConta();
+                    aguarde();
+                    break;
+                }
+                case "3", "03" -> {
+                    ativoAuten = false;
+                    break;
+                }
+                default -> {
+                    System.out.println(CentralMenus.OPCAO_INVALIDA);
+                }
+            }
+        }
+
+    }
+
+    private static boolean menuLogin() {
+        Usuario usuarioLogado = ContaService.fazendoLogin(usuarioDB);
+
+        if (usuarioLogado != null) {
+           menuTelaPrincipal(usuarioLogado);
+           return false; // depois de sair da tela principal, o usuário retorna a tela inicial, útil pra logouts
+        } else { return true; }
+    }
+
+    private static void menuCriarConta() {
+        Map<String, String> dadosUsuario = ContaService.criandoNovaConta();
+
+        // cria o usuário
+        Usuario novoUsuario = new Usuario(
+                dadosUsuario.get("nomeCompleto"),
+                dadosUsuario.get("cpf"),
+                dadosUsuario.get("email"),
+                dadosUsuario.get("senha")
+        );
+
+        usuarioDB.adicionar(novoUsuario);
+
+    }
+
+    private static void menuTelaPrincipal(Usuario usuarioAtual) {
+        System.out.println("Usuário logado: " + usuarioAtual.getNomeCompleto());
         System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
     }
 
