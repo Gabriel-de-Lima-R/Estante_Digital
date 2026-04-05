@@ -31,6 +31,15 @@ public class Usuario {
         return nomeCompleto;
     }
 
+    public String getPrimeiroNome() {
+        if (this.nomeCompleto == null) { return " "; }
+
+        String[] nomes = this.nomeCompleto.split(" ");
+        String primeiroNome = nomes[0].toLowerCase(); // pega o primeiro nome minusculo
+        return primeiroNome.substring(0, 1).toUpperCase() +
+                primeiroNome.substring(1).toLowerCase(); // tranforma a primeira letra em maiusulo
+    }
+
     public void setNomeCompleto(String nomeCompleto) {
         this.nomeCompleto = nomeCompleto;
     }

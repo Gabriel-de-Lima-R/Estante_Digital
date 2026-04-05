@@ -106,6 +106,7 @@ public class Main {
 
     private static void menuTelaPrincipal(Usuario usuarioAtual) {
         System.out.println("Usuário logado: " + usuarioAtual.getNomeCompleto());
+        System.out.printf(CentralMenus.MENU_PRINCIPAL, usuarioAtual.getPrimeiroNome(), "\n");
         System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
     }
 

@@ -75,5 +75,22 @@ public class CentralMenus {
     public static final String TITULO_CADASTRO = "\n=== CRIAR CONTA ===\n";
 
 
+    // ==================== MENU PRINCIPAL (LOGADO) ====================
+
+    public static final String MENU_PRINCIPAL = """
+            
+            ========== MENU PRINCIPAL ==========
+            
+            Seja Bem-vindo(a) %s!
+            
+            [1] - Ver acervo disponível
+            [2] - Pegar livro emprestado
+            [3] - Devolver livro
+            [4] - Buscar por livro
+            [5] - Sair
+            
+            Escolha uma opção: """;
+
+
 
 }
