@@ -3,9 +3,7 @@ package com.estantedigital.model;
 public class ItemAcervo {
     private long id;
     private String titulo;
-    private String autor;
     private TipoItem tipo;
-    private String genero;
     private StatusItem status;
 
     // Enum para itens e status (por serem fixos)
@@ -20,11 +18,27 @@ public class ItemAcervo {
         EMPRESTADO
     }
 
-
-    public ItemAcervo(String titulo, String autor) {
+    public ItemAcervo(String titulo) {
         this.titulo = titulo;
-        this.autor = autor;
         this.status = StatusItem.DISPONIVEL;
+    }
+
+    public void setTipo(String tipoEscolhido) {
+        tipoEscolhido = tipoEscolhido.toLowerCase();
+        switch (tipoEscolhido) {
+            case "livro" -> this.tipo = TipoItem.LIVRO;
+            case "revista" -> this.tipo = TipoItem.REVISTA;
+            case "enciclopedia" -> this.tipo = TipoItem.ENCICLOPEDIA;
+            default -> System.out.println("Tipo inválido: " + tipoEscolhido);
+        }
+    }
+
+    public String getTipo() {
+        if (this.tipo != null) {
+            return this.tipo.name();
+        } else {
+            return "DESCONHECIDO";
+        }
     }
 
     @Override
@@ -32,14 +46,8 @@ public class ItemAcervo {
         return "ItemAcervo{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
                 ", tipo=" + tipo +
-                ", genero='" + genero + '\'' +
                 ", status=" + status +
                 '}';
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 }
