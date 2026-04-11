@@ -41,13 +41,39 @@ public class ItemAcervo {
         }
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public StatusItem getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
-        return "ItemAcervo{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", tipo=" + tipo +
-                ", status=" + status +
-                '}';
+        if (this instanceof Livro livro) {
+            return String.format("📚 ID: %d | %s | Autor: %s | Gênero: %s | Ano: %d | Status: %s",
+                    livro.getId(), livro.getTitulo(), livro.getAutor(),
+                    livro.getGenero(), livro.getAnoPublicacao(), livro.getStatus()
+            );
+        } else if (this instanceof Revista revista) {
+            return String.format("📰 ID: %d | %s | Editora: %s | Gênero: %s | Ano: %d | Status: %s",
+                    revista.getId(), revista.getTitulo(), revista.getEditoraResponsavel(),
+                    revista.getGenero(), revista.getAnoPublicacao(), revista.getStatus()
+            );
+        } else if (this instanceof Enciclopedia enc) {
+            return String.format("📖 ID: %d | %s | Editora: %s | Idioma: %s | Volumes: %d | Edição: %d | Status: %s",
+                    enc.getId(), enc.getTitulo(), enc.getEditoraResponsavel(),
+                    enc.getIdioma(), enc.getVolumes(), enc.getAnoEdicao(), enc.getStatus()
+            );
+        }
+
+        // Fallback
+        return String.format("ID: %d | %s | Status: %s", id, titulo, status);
+
     }
 }

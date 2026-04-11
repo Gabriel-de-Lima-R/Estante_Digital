@@ -13,4 +13,27 @@ public class Livro extends ItemAcervo{
         this.ano_publicacao = ano_publicacao;
         setTipo("livro");
     }
+
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public int getAnoPublicacao() {
+        return ano_publicacao;
+    }
+
+    @Override
+    public String toString() {
+        return "📚 ID: " + getId() +
+                " | " + getTitulo() +
+                " | Autor: " + autor +
+                " | Gênero: " + genero +
+                " | Ano: " + ano_publicacao +
+                " | Status: " + getStatus();
+    }
 }

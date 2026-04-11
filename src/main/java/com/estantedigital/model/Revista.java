@@ -13,4 +13,26 @@ public class Revista extends ItemAcervo {
         this.ano_publicacao = ano_publicacao;
         setTipo("revista");
     }
+
+    public String getEditoraResponsavel() {
+        return editora_responsavel;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public int getAnoPublicacao() {
+        return ano_publicacao;
+    }
+
+    @Override
+    public String toString() {
+        return "📰 ID: " + getId() +
+                " | " + getTitulo() +
+                " | Editora: " + editora_responsavel +
+                " | Gênero: " + genero +
+                " | Ano: " + ano_publicacao +
+                " | Status: " + getStatus();
+    }
 }

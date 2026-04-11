@@ -1,7 +1,9 @@
 package com.estantedigital;
 
 import com.estantedigital.cli.CentralMenus;
+import com.estantedigital.model.ItemAcervo;
 import com.estantedigital.model.Usuario;
+import com.estantedigital.repository.AcervoRepository;
 import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
 
@@ -12,6 +14,7 @@ import java.util.Scanner;
 public class Main {
     public static Scanner leitor = new Scanner(System.in);
     public static UsuarioRepository usuarioDB = new UsuarioRepository();
+    public static AcervoRepository acervoDB = new AcervoRepository();
 
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
@@ -111,7 +114,23 @@ public class Main {
     }
 
     private static void acervoDisponivel() {
-        System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
+        List<ItemAcervo> todosItens = acervoDB.listarTodos();
+
+        if (todosItens.isEmpty()) {
+            System.out.println("\n❌ Nenhum item cadastrado no acervo.");
+        } else {
+            System.out.println(CentralMenus.ACERVO_DISPONIVEL_TITULO + "\n");
+
+            for (ItemAcervo item : todosItens) {
+                System.out.println(item);  // toString() já formatado
+                System.out.println(CentralMenus.SEPARADOR);
+            }
+
+            System.out.println("\n📊 Total de itens no acervo: " + todosItens.size());
+        }
+
+        // Mensagem informando que precisa logar para pegar emprestado
+        System.out.println("\n" + CentralMenus.MENSAGEM_PRECISA_LOGAR);
     }
 
     public static void limparTerminal() {

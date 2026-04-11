@@ -58,6 +58,7 @@ public class CentralMenus {
 
     public static final String MENSAGEM_PRECISA_LOGAR = "Você precisa estar logado para pegar livros emprestados.";
     public static final String ACERVO_DISPONIVEL_TITULO = "\n=== ACERVO DISPONÍVEL ===\n";
+    public static final String SEPARADOR = "----------------------------------------";
 
     // ==================== MENU DE AUTENTICAÇÃO ====================
 
