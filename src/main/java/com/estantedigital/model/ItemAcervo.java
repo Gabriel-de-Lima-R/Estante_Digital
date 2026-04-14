@@ -23,6 +23,22 @@ public class ItemAcervo {
         this.status = StatusItem.DISPONIVEL;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setStatus(String statusStr) {
+        if ("DISPONIVEL".equalsIgnoreCase(statusStr)) {
+            this.status = StatusItem.DISPONIVEL;
+        } else if ("EMPRESTADO".equalsIgnoreCase(statusStr)) {
+            this.status = StatusItem.EMPRESTADO;
+        }
+    }
+
+    public void setStatus(StatusItem status) {
+        this.status = status;
+    }
+
     public void setTipo(String tipoEscolhido) {
         tipoEscolhido = tipoEscolhido.toLowerCase();
         switch (tipoEscolhido) {
@@ -55,17 +71,20 @@ public class ItemAcervo {
 
     @Override
     public String toString() {
-        if (this instanceof Livro livro) {
+        if (this.tipo.name().equals("LIVRO")) {
+            Livro livro = (Livro) this;
             return String.format("📚 ID: %d | %s | Autor: %s | Gênero: %s | Ano: %d | Status: %s",
                     livro.getId(), livro.getTitulo(), livro.getAutor(),
                     livro.getGenero(), livro.getAnoPublicacao(), livro.getStatus()
             );
-        } else if (this instanceof Revista revista) {
+        } else if (this.tipo.name().equals("REVISTA")) {
+            Revista revista = (Revista) this;
             return String.format("📰 ID: %d | %s | Editora: %s | Gênero: %s | Ano: %d | Status: %s",
                     revista.getId(), revista.getTitulo(), revista.getEditoraResponsavel(),
                     revista.getGenero(), revista.getAnoPublicacao(), revista.getStatus()
             );
-        } else if (this instanceof Enciclopedia enc) {
+        } else if (this.tipo.name().equals("ENCICLOPEDIA")) {
+            Enciclopedia enc = (Enciclopedia) this;
             return String.format("📖 ID: %d | %s | Editora: %s | Idioma: %s | Volumes: %d | Edição: %d | Status: %s",
                     enc.getId(), enc.getTitulo(), enc.getEditoraResponsavel(),
                     enc.getIdioma(), enc.getVolumes(), enc.getAnoEdicao(), enc.getStatus()

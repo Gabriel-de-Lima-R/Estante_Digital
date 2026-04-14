@@ -1,5 +1,6 @@
 package com.estantedigital.repository;
 
+import com.estantedigital.dto.ItemAcervoDTO;
 import com.estantedigital.model.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,12 +42,18 @@ public class AcervoRepository {
             }
 
             try (FileReader reader = new FileReader(arquivo)) {
-                Type tipoDaLista = new TypeToken<List<ItemAcervo>>(){}.getType();
-                List<ItemAcervo> carregados = gson.fromJson(reader, tipoDaLista);
+                Type tipoListaDTO = new TypeToken<List<ItemAcervoDTO>>(){}.getType();
+                List<ItemAcervoDTO> dtos = gson.fromJson(reader, tipoListaDTO);
 
-                if (carregados != null && !carregados.isEmpty()) {
-                    acervoTotal.addAll(carregados);
-                    System.out.println("Carregados " + carregados.size() + " itens de: " + url);
+                if (dtos != null && !dtos.isEmpty()) {
+                    // Converte cada DTO para o objeto correto (Livro, Revista, Enciclopedia)
+                    for (ItemAcervoDTO dto : dtos) {
+                        ItemAcervo item = converterDTOparaItem(dto);
+                        if (item != null) {
+                            acervoTotal.add(item);
+                        }
+                    }
+                    System.out.println("Carregados " + dtos.size() + " itens de: " + url);
                 }
             } catch (IOException e) {
                 System.out.println("Erro ao carregar " + url + ": " + e.getMessage());
@@ -86,6 +93,63 @@ public class AcervoRepository {
     }
 
     public List<ItemAcervo> listarTodos() {
-        return new ArrayList<>(acervoTotal);
+        List<ItemAcervo> lista = new ArrayList<>(acervoTotal);
+
+        // Bubble Sort por id
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = 0; j < lista.size() - i - 1; j++) {
+                if (lista.get(j).getId() > lista.get(j + 1).getId()) {
+                    ItemAcervo temp = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, temp);
+                }
+            }
+        }
+
+        return lista;
+    }
+
+    private ItemAcervo converterDTOparaItem(ItemAcervoDTO dto) {
+        String tipo = dto.getTipo();
+
+        switch (tipo) {
+            case "LIVRO":
+                Livro livro = new Livro(
+                        dto.getTitulo(),
+                        dto.getAutor(),
+                        dto.getGenero(),
+                        dto.getAno_publicacao()
+                );
+                livro.setId(dto.getId());
+                livro.setStatus(dto.getStatus());
+                return livro;
+
+            case "REVISTA":
+                Revista revista = new Revista(
+                        dto.getTitulo(),
+                        dto.getEditora_responsavel(),
+                        dto.getGenero(),
+                        dto.getAno_publicacao()
+                );
+                revista.setId(dto.getId());
+                revista.setStatus(dto.getStatus());
+                return revista;
+
+            case "ENCICLOPEDIA":
+                Enciclopedia enciclopedia = new Enciclopedia(
+                        dto.getTitulo(),
+                        dto.getEditora_responsavel(),
+                        dto.getIdioma(),
+                        dto.getVolumes(),
+                        dto.getAno_edicao()
+                );
+                enciclopedia.setId(dto.getId());
+                enciclopedia.setStatus(dto.getStatus());
+                return enciclopedia;
+
+            default:
+                System.err.println("Tipo desconhecido: " + tipo);
+                return null;
+        }
     }
 }
