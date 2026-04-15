@@ -27,14 +27,4 @@ public class Livro extends ItemAcervo{
         return ano_publicacao;
     }
 
-    @Override
-    public String toString() {
-        return "📚 ID: " + getId() +
-                " | " + getTitulo() +
-                " | Autor: " + autor +
-                " | Gênero: " + genero +
-                " | Ano: " + ano_publicacao +
-                " | Status: " + getStatus();
-    }
-
 }

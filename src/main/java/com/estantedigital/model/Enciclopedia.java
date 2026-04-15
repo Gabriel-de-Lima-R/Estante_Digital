@@ -31,14 +31,4 @@ public class Enciclopedia extends ItemAcervo {
         return ano_edicao;
     }
 
-    @Override
-    public String toString() {
-        return "📖 ID: " + getId() +
-                " | " + getTitulo() +
-                " | Editora: " + editora_responsavel +
-                " | Idioma: " + idioma +
-                " | Volumes: " + volumes +
-                " | Edição: " + ano_edicao +
-                " | Status: " + getStatus();
-    }
 }

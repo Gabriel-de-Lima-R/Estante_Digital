@@ -35,10 +35,6 @@ public class ItemAcervo {
         }
     }
 
-    public void setStatus(StatusItem status) {
-        this.status = status;
-    }
-
     public void setTipo(String tipoEscolhido) {
         tipoEscolhido = tipoEscolhido.toLowerCase();
         switch (tipoEscolhido) {
@@ -69,30 +65,34 @@ public class ItemAcervo {
         return status;
     }
 
+    public String disponivelTexto() {
+        return this.status.name().equals("DISPONIVEL") ? "✅ DISPONÍVEL" : "❌ EMPRESTADO";
+    }
+
     @Override
     public String toString() {
         if (this.tipo.name().equals("LIVRO")) {
             Livro livro = (Livro) this;
-            return String.format("📚 ID: %d | %s | Autor: %s | Gênero: %s | Ano: %d | Status: %s",
+            return String.format("📚 ID: %d | %s | Autor: %s | Gênero: %s | Ano: %d | %s",
                     livro.getId(), livro.getTitulo(), livro.getAutor(),
-                    livro.getGenero(), livro.getAnoPublicacao(), livro.getStatus()
+                    livro.getGenero(), livro.getAnoPublicacao(), livro.disponivelTexto()
             );
         } else if (this.tipo.name().equals("REVISTA")) {
             Revista revista = (Revista) this;
-            return String.format("📰 ID: %d | %s | Editora: %s | Gênero: %s | Ano: %d | Status: %s",
+            return String.format("📰 ID: %d | %s | Editora: %s | Gênero: %s | Ano: %d | %s",
                     revista.getId(), revista.getTitulo(), revista.getEditoraResponsavel(),
-                    revista.getGenero(), revista.getAnoPublicacao(), revista.getStatus()
+                    revista.getGenero(), revista.getAnoPublicacao(), revista.disponivelTexto()
             );
         } else if (this.tipo.name().equals("ENCICLOPEDIA")) {
             Enciclopedia enc = (Enciclopedia) this;
-            return String.format("📖 ID: %d | %s | Editora: %s | Idioma: %s | Volumes: %d | Edição: %d | Status: %s",
+            return String.format("📖 ID: %d | %s | Editora: %s | Idioma: %s | Volumes: %d | Edição: %d | %s",
                     enc.getId(), enc.getTitulo(), enc.getEditoraResponsavel(),
-                    enc.getIdioma(), enc.getVolumes(), enc.getAnoEdicao(), enc.getStatus()
+                    enc.getIdioma(), enc.getVolumes(), enc.getAnoEdicao(), enc.disponivelTexto()
             );
         }
 
         // Fallback
-        return String.format("ID: %d | %s | Status: %s", id, titulo, status);
+        return String.format("ID: %d | %s | Status: %s", id, titulo, disponivelTexto());
 
     }
 }

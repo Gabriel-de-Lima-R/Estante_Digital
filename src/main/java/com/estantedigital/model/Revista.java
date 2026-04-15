@@ -26,13 +26,4 @@ public class Revista extends ItemAcervo {
         return ano_publicacao;
     }
 
-    @Override
-    public String toString() {
-        return "📰 ID: " + getId() +
-                " | " + getTitulo() +
-                " | Editora: " + editora_responsavel +
-                " | Gênero: " + genero +
-                " | Ano: " + ano_publicacao +
-                " | Status: " + getStatus();
-    }
 }

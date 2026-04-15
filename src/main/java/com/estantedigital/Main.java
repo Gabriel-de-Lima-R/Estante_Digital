@@ -122,8 +122,10 @@ public class Main {
             System.out.println(CentralMenus.ACERVO_DISPONIVEL_TITULO + "\n");
 
             for (ItemAcervo item : todosItens) {
-                System.out.println(item);  // toString() já formatado
-                System.out.println(CentralMenus.SEPARADOR);
+                if (item.getStatus().name().equals("DISPONIVEL")) {
+                    System.out.println(item);
+                    System.out.println(CentralMenus.SEPARADOR);
+                }
             }
 
             System.out.println("\n📊 Total de itens no acervo: " + todosItens.size());
