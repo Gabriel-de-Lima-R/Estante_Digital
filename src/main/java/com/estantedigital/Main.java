@@ -34,6 +34,8 @@ public class Main {
                 case "1", "01" ->
                 {
                     acervoDisponivel();
+                    // Mensagem informando que precisa logar para pegar emprestado
+                    System.out.println("\n" + CentralMenus.ACERVO_DICA_NAO_LOGADO);
                     aguarde();
                     break;
                 }
@@ -56,7 +58,7 @@ public class Main {
     private static void menuAutenticacao() {
         boolean ativoAuten = true;
         while (ativoAuten) {
-            System.out.println(CentralMenus.MENU_AUTENTICACAO);
+            System.out.print(CentralMenus.MENU_AUTENTICACAO + " ");
             String opcaoAuten = leitor.nextLine();
             limparTerminal();
             switch (opcaoAuten) {
@@ -88,6 +90,7 @@ public class Main {
 
         if (usuarioLogado != null) {
            menuTelaPrincipal(usuarioLogado);
+
            return false; // depois de sair da tela principal, o usuário retorna a tela inicial, útil pra logouts
         } else { return true; }
     }
@@ -108,9 +111,28 @@ public class Main {
     }
 
     private static void menuTelaPrincipal(Usuario usuarioAtual) {
-        System.out.println("Usuário logado: " + usuarioAtual.getNomeCompleto());
-        System.out.printf(CentralMenus.MENU_PRINCIPAL, usuarioAtual.getPrimeiroNome(), "\n");
-        System.out.println(CentralMenus.AGUARDE_IMPLEMENTACAO);
+        System.out.println("Seja Bem-vindo(a) " + usuarioAtual.getPrimeiroNome() + "!");
+        boolean ativoPrinc = true;
+        while (ativoPrinc) {
+            System.out.print(CentralMenus.MENU_PRINCIPAL + " ");
+            String opcaoPrinc = leitor.nextLine();
+            switch (opcaoPrinc) {
+                case "1", "01" -> {
+                    acervoDisponivel();
+                    // Mensagem informando que precisa logar para pegar emprestado
+                    System.out.println("\n" + CentralMenus.ACERVO_DICA_LOGADO);
+                    aguarde();
+                    break;
+                }
+                case "5", "05" -> {
+                    ativoPrinc = false;
+                    break;
+                }
+                default -> {
+                    System.out.println(CentralMenus.OPCAO_INVALIDA);
+                }
+            }
+        }
     }
 
     private static void acervoDisponivel() {
@@ -130,9 +152,6 @@ public class Main {
 
             System.out.println("\n📊 Total de itens no acervo: " + todosItens.size());
         }
-
-        // Mensagem informando que precisa logar para pegar emprestado
-        System.out.println("\n" + CentralMenus.MENSAGEM_PRECISA_LOGAR);
     }
 
     public static void limparTerminal() {

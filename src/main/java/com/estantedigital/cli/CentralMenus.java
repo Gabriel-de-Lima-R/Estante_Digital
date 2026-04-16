@@ -56,9 +56,19 @@ public class CentralMenus {
 
     // ==================== MENSAGENS DO ACERVO ====================
 
-    public static final String MENSAGEM_PRECISA_LOGAR = "Você precisa estar logado para pegar livros emprestados.";
     public static final String ACERVO_DISPONIVEL_TITULO = "\n=== ACERVO DISPONÍVEL ===\n";
     public static final String SEPARADOR = "----------------------------------------";
+    public static final String ACERVO_DICA_NAO_LOGADO = """
+    ══════════════════════════════════════════════════════════════════
+    💡 Dica: Você precisa estar logado para pegar livros emprestados!
+    ══════════════════════════════════════════════════════════════════
+    """;
+
+    public static final String ACERVO_DICA_LOGADO = """
+    ══════════════════════════════════════════════════════════════════
+    💡 Dica: Para pegar um livro, utilize a opção 2 do menu principal!
+    ══════════════════════════════════════════════════════════════════
+    """;
 
     // ==================== MENU DE AUTENTICAÇÃO ====================
 
@@ -82,8 +92,6 @@ public class CentralMenus {
             
             ========== MENU PRINCIPAL ==========
             
-            Seja Bem-vindo(a) %s!
-            
             [1] - Ver acervo disponível
             [2] - Pegar livro emprestado
             [3] - Devolver livro
@@ -91,7 +99,6 @@ public class CentralMenus {
             [5] - Sair
             
             Escolha uma opção: """;
-
 
 
 }
