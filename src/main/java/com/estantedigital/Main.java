@@ -7,6 +7,7 @@ import com.estantedigital.repository.AcervoRepository;
 import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -89,9 +90,10 @@ public class Main {
         Usuario usuarioLogado = ContaService.fazendoLogin(usuarioDB);
 
         if (usuarioLogado != null) {
-           menuTelaPrincipal(usuarioLogado);
+            limparTerminal();
+            menuTelaPrincipal(usuarioLogado);
 
-           return false; // depois de sair da tela principal, o usuário retorna a tela inicial, útil pra logouts
+            return false; // depois de sair da tela principal, o usuário retorna a tela inicial, útil pra logouts
         } else { return true; }
     }
 
@@ -116,11 +118,17 @@ public class Main {
         while (ativoPrinc) {
             System.out.print(CentralMenus.MENU_PRINCIPAL + " ");
             String opcaoPrinc = leitor.nextLine();
+            limparTerminal();
             switch (opcaoPrinc) {
                 case "1", "01" -> {
                     acervoDisponivel();
                     // Mensagem informando que precisa logar para pegar emprestado
                     System.out.println("\n" + CentralMenus.ACERVO_DICA_LOGADO);
+                    aguarde();
+                    break;
+                }
+                case "4", "04" -> {
+                    buscarLivro();
                     aguarde();
                     break;
                 }
@@ -133,6 +141,36 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void buscarLivro() {
+        System.out.println(CentralMenus.BUSCAR_TITULO);
+        System.out.print("📝 Digite o título ou parte do título para buscar: ");
+        String termoBusca  = leitor.nextLine().toLowerCase(); // padroniza a minuscula
+        List<ItemAcervo> todosItens = acervoDB.listarTodos();
+        if (todosItens.isEmpty()) {
+            System.out.println("\n❌ Nenhum item cadastrado no acervo.");
+        } else {
+            // Filtra os itens que contêm o termo no título
+            List<ItemAcervo> resultados = new ArrayList<>();
+            for (ItemAcervo item : todosItens) {
+                if (item.getTitulo().toLowerCase().startsWith(termoBusca)) {
+                    resultados.add(item);
+                }
+            }
+
+            if (resultados.isEmpty()) {
+                System.out.println("\n" + CentralMenus.NENHUM_ITEM_ENCONTRADO);
+            } else {
+                System.out.println("\n" + CentralMenus.RESULTADO_BUSCA_TITULO);
+                for (ItemAcervo item : resultados) {
+                    System.out.println(item);
+                    System.out.println(CentralMenus.SEPARADOR);
+                }
+                System.out.print("\n");
+            }
+        }
+
     }
 
     private static void acervoDisponivel() {

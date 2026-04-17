@@ -100,5 +100,26 @@ public class CentralMenus {
             
             Escolha uma opção: """;
 
+    // ==================== MENSAGENS DA BUSCA POR LIVRO (RF03.4) ====================
+
+    public static final String BUSCAR_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      🔍 BUSCAR POR LIVRO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String RESULTADO_BUSCA_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      📋 RESULTADO DA BUSCA
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String NENHUM_ITEM_ENCONTRADO = """
+    ═══════════════════════════════════════════════════════════
+                      ❌ NENHUM ITEM ENCONTRADO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+
 
 }
