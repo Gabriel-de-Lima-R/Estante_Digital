@@ -1,0 +1,102 @@
+[
+  {
+    "id": 31,
+    "titulo": "Enciclopédia Barsa",
+    "editora_responsavel": "Encyclopaedia Britannica do Brasil",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 18,
+    "ano_edicao": 2010
+  },
+  {
+    "id": 32,
+    "titulo": "Encyclopædia Britannica",
+    "editora_responsavel": "Encyclopædia Britannica, Inc.",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Inglês",
+    "status": "DISPONIVEL",
+    "volumes": 32,
+    "ano_edicao": 2010
+  },
+  {
+    "id": 33,
+    "titulo": "Grande Enciclopédia Larousse Cultural",
+    "editora_responsavel": "Editora Nova Cultural",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 24,
+    "ano_edicao": 1998
+  },
+  {
+    "id": 34,
+    "titulo": "Enciclopédia Mirador Internacional",
+    "editora_responsavel": "Encyclopaedia Britannica do Brasil",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 20,
+    "ano_edicao": 1995
+  },
+  {
+    "id": 35,
+    "titulo": "Enciclopédia Delta Larousse",
+    "editora_responsavel": "Editora Delta",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 15,
+    "ano_edicao": 1970
+  },
+  {
+    "id": 36,
+    "titulo": "Coleção Conhecer",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 10,
+    "ano_edicao": 1966
+  },
+  {
+    "id": 37,
+    "titulo": "Enciclopédia de Literatura Brasileira",
+    "editora_responsavel": "Afrânio Coutinho / Global Editora",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 2,
+    "ano_edicao": 2001
+  },
+  {
+    "id": 38,
+    "titulo": "The World Book Encyclopedia",
+    "editora_responsavel": "World Book, Inc.",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Inglês",
+    "status": "DISPONIVEL",
+    "volumes": 22,
+    "ano_edicao": 2022
+  },
+  {
+    "id": 39,
+    "titulo": "Enciclopédia Abril",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 12,
+    "ano_edicao": 1971
+  },
+  {
+    "id": 40,
+    "titulo": "Grande Enciclopédia Portuguesa e Brasileira",
+    "editora_responsavel": "Editorial Enciclopédia",
+    "tipo": "ENCICLOPEDIA",
+    "idioma": "Português",
+    "status": "DISPONIVEL",
+    "volumes": 40,
+    "ano_edicao": 1960
+  }
+]
