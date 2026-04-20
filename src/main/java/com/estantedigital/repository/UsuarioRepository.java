@@ -16,7 +16,7 @@ import java.util.List;
 public class UsuarioRepository {
     private static final String ARQUIVO_USUARIOS = "src/main/resources/usuarios.json";
     private Gson gson;
-    private static List<Usuario> listaDeUsuarios = new ArrayList<>();
+    private static List<Usuario> listaDeUsuarios;
     private long proximoId = 1;  // contador independente
 
     public UsuarioRepository() {

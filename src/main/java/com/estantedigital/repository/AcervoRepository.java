@@ -22,9 +22,6 @@ public class AcervoRepository {
     };
     private Gson gson;
     private static List<ItemAcervo> acervoTotal = new ArrayList<>();
-//    private static List<Livro> estanteLivros = new ArrayList<>();
-//    private static List<Revista> estanteRevistas = new ArrayList<>();
-//    private static List<Enciclopedia> estanteEnciclopedias = new ArrayList<>();
 
     public AcervoRepository() {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
