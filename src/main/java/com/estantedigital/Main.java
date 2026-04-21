@@ -148,7 +148,7 @@ public class Main {
                     break;
                 }
                 case "5", "05" -> {
-                    ativoPrinc = false;
+                    ativoPrinc = false; // logout direto
                     break;
                 }
                 default -> {
