@@ -1,6 +1,7 @@
 package com.estantedigital.repository;
 
 import com.estantedigital.model.Emprestimo;
+import com.estantedigital.model.ItemAcervo;
 import com.estantedigital.model.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,9 +52,31 @@ public class EmprestimoRepository {
         try (FileWriter writer = new FileWriter(ARQUIVO_EMPRESTIMOS)) {
             gson.toJson(listaDeEmprestimos, writer);
         } catch (IOException e) {
-            System.err.println("Erro ao salvar usuários: " + e.getMessage());
+            System.err.println("Erro ao salvar emprestimos: " + e.getMessage());
         }
     }
 
+    private long encontrarProximoId() {
+        if (listaDeEmprestimos.isEmpty()) {
+            return 1;
+        }
+        long maiorId = 0;
+        for (Emprestimo emp : listaDeEmprestimos) {
+            if (emp.getId() > maiorId) {
+                maiorId = emp.getId();
+            }
+        }
+        return maiorId + 1;
+    }
+
+    public void adicionar(Usuario usuario, ItemAcervo item) {
+        long novoId = encontrarProximoId();
+        Emprestimo emp = new Emprestimo(novoId, usuario.getId(), item.getId());
+        listaDeEmprestimos.add(emp);
+        salvarNoArquivo();
+        System.out.println("Empréstimo criado com sucesso (ID #" + novoId + ")");
+    }
+
+    
 
 }

@@ -1,14 +1,16 @@
 package com.estantedigital.model;
 
+import java.time.LocalDate;
+
 public class Usuario {
     private long id; // deve ser único
     private String nomeCompleto;
     private String cpf; // deve ser único
     private String email;
     private String senha;
-    private String livroEmPosse;
+    private ItemAcervo itemEmPosse;
     private boolean bloqueado; // true ou false
-    private String dataDeDesbloqueio; // Formato ISO: "2026-04-08" ou null
+    private LocalDate dataDeDesbloqueio; // Formato ISO: "2026-04-08" ou null
 
     public Usuario(String nomeCompleto, String cpf, String email, String senha) {
         this.nomeCompleto = nomeCompleto;
@@ -16,6 +18,7 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
         this.bloqueado = false; // todos os usuários começam desbloqueados
+        this.itemEmPosse = null;
         this.dataDeDesbloqueio = null;
     }
 
@@ -68,12 +71,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getLivroEmPosse() {
-        return livroEmPosse;
+    public ItemAcervo getItemEmPosse() {
+        return itemEmPosse;
     }
 
-    public void setLivroEmPosse(String livroEmPosse) {
-        this.livroEmPosse = livroEmPosse;
+    public void setItemEmPosse(ItemAcervo itemEmPosse) {
+        this.itemEmPosse = itemEmPosse;
     }
 
     public boolean isBloqueado() {
@@ -84,11 +87,11 @@ public class Usuario {
         this.bloqueado = bloqueado;
     }
 
-    public String getDataDeDesbloqueio() {
+    public LocalDate getDataDeDesbloqueio() {
         return dataDeDesbloqueio;
     }
 
-    public void setDataDeDesbloqueio(String dataDeDesbloqueio) {
+    public void setDataDeDesbloqueio(LocalDate dataDeDesbloqueio) {
         this.dataDeDesbloqueio = dataDeDesbloqueio;
     }
 

@@ -4,8 +4,10 @@ import com.estantedigital.cli.CentralMenus;
 import com.estantedigital.model.ItemAcervo;
 import com.estantedigital.model.Usuario;
 import com.estantedigital.repository.AcervoRepository;
+import com.estantedigital.repository.EmprestimoRepository;
 import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
+import com.estantedigital.service.EmprestimoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +18,13 @@ public class Main {
     public static Scanner leitor = new Scanner(System.in);
     public static UsuarioRepository usuarioDB = new UsuarioRepository();
     public static AcervoRepository acervoDB = new AcervoRepository();
+    public static EmprestimoRepository emprestimoDB = new EmprestimoRepository();
+    public static EmprestimoService emprestimoService = new EmprestimoService(emprestimoDB, usuarioDB, acervoDB);
 
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
         System.out.println("\n" + CentralMenus.SAUDACAO);
         menuInicial();
-
     }
 
     public static void menuInicial() {
@@ -127,6 +130,10 @@ public class Main {
                     aguarde();
                     break;
                 }
+                case "2", "02" -> {
+                    fluxoEmprestimo(usuarioAtual);
+                    break;
+                }
                 case "4", "04" -> {
                     buscarLivro();
                     aguarde();
@@ -141,6 +148,10 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void fluxoEmprestimo(Usuario usuarioLogado) {
+
     }
 
     private static void buscarLivro() {

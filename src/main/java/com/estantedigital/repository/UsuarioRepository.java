@@ -126,4 +126,16 @@ public class UsuarioRepository {
         return buscarPorCpf(cpf) != null;
     }
 
+    public void atualizar(Usuario usuarioAtualizado) {
+        for (int i = 0; i < listaDeUsuarios.size(); i++) {
+            if (listaDeUsuarios.get(i).getId() == usuarioAtualizado.getId()) {
+                listaDeUsuarios.set(i, usuarioAtualizado);
+                salvarNoArquivo();
+                System.out.println("Usuário atualizado com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Usuário com ID " + usuarioAtualizado.getId() + " não encontrado.");
+    }
+
 }
