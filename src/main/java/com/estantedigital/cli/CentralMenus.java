@@ -134,4 +134,22 @@ public class CentralMenus {
     public static final String EMPRESTIMO_CANCELADO = "\n❌ Empréstimo cancelado.";
 
 
+    // ==================== MENSAGENS DO FLUXO DE DEVOLUÇÃO ====================
+
+    public static final String DEVOLUCAO_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      📚 DEVOLVER LIVRO
+    ═══════════════════════════════════════════════════════════
+    """;
+    public static final String DEVOLUCAO_SUCESSO = """
+    ✅ Devolução realizada com sucesso!
+    📚 Obrigado por devolver o livro!
+    """;
+
+    public static final String DEVOLUCAO_ATRASADA = """
+    ⚠️ ATENÇÃO: A devolução está ATRASADA!
+    ⚠️ Por favor, justifique honestamente o motivo do atraso com o máximo de detalhes possíveis!
+    """;
+
+
 }

@@ -170,4 +170,13 @@ public class AcervoRepository {
         }
         return null;
     }
+
+    public ItemAcervo buscarPorId(long id) {
+        for (ItemAcervo item : acervoTotal) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
 }

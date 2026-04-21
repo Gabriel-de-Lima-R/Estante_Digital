@@ -27,4 +27,35 @@ public class Emprestimo {
 
     public long getId() { return id; }
 
+    public long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public long getItemId() {
+        return itemId;
+    }
+
+    public LocalDate getDataDevolucaoReal() {
+        return dataDevolucaoReal;
+    }
+
+    public LocalDate getDataRetirada() {
+        return dataRetirada;
+    }
+
+    public LocalDate getDataPrevistaDevolucao() {
+        return dataPrevistaDevolucao;
+    }
+
+    public String getJustificativaAtraso() {
+        return justificativaAtraso;
+    }
+
+    public void setDataDevolucaoReal(LocalDate dataDevolucaoReal) {
+        this.dataDevolucaoReal = dataDevolucaoReal;
+    }
+
+    public void setJustificativaAtraso(String justificativaAtraso) {
+        this.justificativaAtraso = justificativaAtraso;
+    }
 }
