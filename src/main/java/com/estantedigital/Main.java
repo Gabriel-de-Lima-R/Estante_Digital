@@ -152,6 +152,7 @@ public class Main {
         }
     }
 
+    // fluxo emprestimo já finalizado
     private static void fluxoEmprestimo(Usuario usuarioLogado) {
         System.out.println(CentralMenus.EMPRESTIMO_TITULO);
         System.out.print("📝 Digite o nome do acervo que deseja pegar: ");
