@@ -1,0 +1,110 @@
+[
+  {
+    "id": 21,
+    "titulo": "Veja",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Notícias",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1968
+  },
+  {
+    "id": 22,
+    "titulo": "Vogue Brasil",
+    "editora_responsavel": "Edições Globo Condé Nast",
+    "tipo": "REVISTA",
+    "genero": "Moda",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1975
+  },
+  {
+    "id": 23,
+    "titulo": "Superinteressante",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Ciência",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1987
+  },
+  {
+    "id": 24,
+    "titulo": "Quatro Rodas",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Carros",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1960
+  },
+  {
+    "id": 25,
+    "titulo": "Cláudia",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Estilo de Vida",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1961
+  },
+  {
+    "id": 26,
+    "titulo": "Época",
+    "editora_responsavel": "Editora Globo",
+    "tipo": "REVISTA",
+    "genero": "Política",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1998
+  },
+  {
+    "id": 27,
+    "titulo": "Caras",
+    "editora_responsavel": "Editora Perfil",
+    "tipo": "REVISTA",
+    "genero": "Celebridades",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1993
+  },
+  {
+    "id": 28,
+    "titulo": "Exame",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Economia",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1967
+  },
+  {
+    "id": 29,
+    "titulo": "Globo Rural",
+    "editora_responsavel": "Editora Globo",
+    "tipo": "REVISTA",
+    "genero": "Agronegócio",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1985
+  },
+  {
+    "id": 30,
+    "titulo": "Placar",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Esportes",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 1970
+  },
+  {
+    "id": 63,
+    "titulo": "Superinteressante - Edição 400",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Ciência",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2023
+  },
+  {
+    "id": 64,
+    "titulo": "Veja - Edição 2800",
+    "editora_responsavel": "Editora Abril",
+    "tipo": "REVISTA",
+    "genero": "Notícias",
+    "status": "DISPONIVEL",
+    "ano_publicacao": 2024
+  }
+]

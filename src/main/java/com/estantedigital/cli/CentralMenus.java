@@ -56,8 +56,19 @@ public class CentralMenus {
 
     // ==================== MENSAGENS DO ACERVO ====================
 
-    public static final String MENSAGEM_PRECISA_LOGAR = "Você precisa estar logado para pegar livros emprestados.";
     public static final String ACERVO_DISPONIVEL_TITULO = "\n=== ACERVO DISPONÍVEL ===\n";
+    public static final String SEPARADOR = "----------------------------------------";
+    public static final String ACERVO_DICA_NAO_LOGADO = """
+    ══════════════════════════════════════════════════════════════════
+    💡 Dica: Você precisa estar logado para pegar livros emprestados!
+    ══════════════════════════════════════════════════════════════════
+    """;
+
+    public static final String ACERVO_DICA_LOGADO = """
+    ══════════════════════════════════════════════════════════════════
+    💡 Dica: Para pegar um livro, utilize a opção 2 do menu principal!
+    ══════════════════════════════════════════════════════════════════
+    """;
 
     // ==================== MENU DE AUTENTICAÇÃO ====================
 
@@ -74,6 +85,53 @@ public class CentralMenus {
     public static final String TITULO_LOGIN = "\n=== LOGIN ===\n";
     public static final String TITULO_CADASTRO = "\n=== CRIAR CONTA ===\n";
 
+
+    // ==================== MENU PRINCIPAL (LOGADO) ====================
+
+    public static final String MENU_PRINCIPAL = """
+            
+            ========== MENU PRINCIPAL ==========
+            
+            [1] - Ver acervo disponível
+            [2] - Pegar livro emprestado
+            [3] - Devolver livro
+            [4] - Buscar por livro
+            [5] - Sair
+            
+            Escolha uma opção: """;
+
+    // ==================== MENSAGENS DA BUSCA POR LIVRO (RF03.4) ====================
+
+    public static final String BUSCAR_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      🔍 BUSCAR POR LIVRO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String RESULTADO_BUSCA_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      📋 RESULTADO DA BUSCA
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String NENHUM_ITEM_ENCONTRADO = """
+    ═══════════════════════════════════════════════════════════
+                      ❌ NENHUM ITEM ENCONTRADO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    // ==================== MENSAGENS DO FLUXO DE EMPRÉSTIMO ====================
+
+    public static final String EMPRESTIMO_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      📖 PEGAR ACERVO EMPRESTADO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String EMPRESTIMO_USUARIO_BLOQUEADO = "\n❌ Usuário bloqueado! Você não pode pegar livros emprestados.";
+    public static final String EMPRESTIMO_LIVRO_INDISPONIVEL = "\n❌ Livro indisponível! Aguarde 7 dias até devolverem!";
+    public static final String EMPRESTIMO_JA_POSSUI_LIVRO = "\n❌ Você já possui um livro emprestado. Devolva-o antes de pegar outro.";
+    public static final String EMPRESTIMO_CANCELADO = "\n❌ Empréstimo cancelado.";
 
 
 }
