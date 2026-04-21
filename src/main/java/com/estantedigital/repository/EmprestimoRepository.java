@@ -82,6 +82,25 @@ public class EmprestimoRepository {
         System.out.println("Empréstimo criado com sucesso (ID #" + novoId + ")");
     }
 
+    public Emprestimo buscarEmprestimoAtivoPorUsuario(long usuarioId) {
+        for (Emprestimo emp : listaDeEmprestimos) {
+            if (emp.getUsuarioId() == usuarioId && emp.getDataDevolucaoReal() == null) {
+                return emp;
+            }
+        }
+        return null;
+    }
 
+    public void atualizar(Emprestimo emprestimoAtualizado) {
+        for (int i = 0; i < listaDeEmprestimos.size(); i++) {
+            if (listaDeEmprestimos.get(i).getId() == emprestimoAtualizado.getId()) {
+                listaDeEmprestimos.set(i, emprestimoAtualizado);
+                salvarNoArquivo();
+                System.out.println("Emprestimo atualizado com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Empréstimo com ID " + emprestimoAtualizado.getId() + " não encontrado.");
+    }
 
 }
