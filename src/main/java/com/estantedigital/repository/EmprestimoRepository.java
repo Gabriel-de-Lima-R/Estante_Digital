@@ -1,5 +1,6 @@
 package com.estantedigital.repository;
 
+import com.estantedigital.adapter.LocalDateAdapter;
 import com.estantedigital.model.Emprestimo;
 import com.estantedigital.model.ItemAcervo;
 import com.estantedigital.model.Usuario;
@@ -12,6 +13,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,10 @@ public class EmprestimoRepository {
     private long proximoId = 1;  // contador independente
 
     public EmprestimoRepository() {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .create();
         this.listaDeEmprestimos = new ArrayList<>();
         carregarDoArquivo();
     }
@@ -77,6 +82,6 @@ public class EmprestimoRepository {
         System.out.println("Empréstimo criado com sucesso (ID #" + novoId + ")");
     }
 
-    
+
 
 }

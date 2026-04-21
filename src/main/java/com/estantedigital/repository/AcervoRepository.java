@@ -161,4 +161,13 @@ public class AcervoRepository {
         }
         System.out.println("Item com ID " + itemAtualizado.getId() + " não encontrado.");
     }
+
+    public ItemAcervo buscarPorTitulo(String titulo) {
+        for (ItemAcervo item : acervoTotal) {
+            if (item.getTitulo().equalsIgnoreCase(titulo)) {
+                return item;
+            }
+        }
+        return null;
+    }
 }

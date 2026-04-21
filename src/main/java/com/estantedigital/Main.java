@@ -9,6 +9,7 @@ import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
 import com.estantedigital.service.EmprestimoService;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +133,7 @@ public class Main {
                 }
                 case "2", "02" -> {
                     fluxoEmprestimo(usuarioAtual);
+                    aguarde();
                     break;
                 }
                 case "4", "04" -> {
@@ -151,6 +153,26 @@ public class Main {
     }
 
     private static void fluxoEmprestimo(Usuario usuarioLogado) {
+        System.out.println(CentralMenus.EMPRESTIMO_TITULO);
+        System.out.print("📝 Digite o nome do acervo que deseja pegar: ");
+        String tituloDesejado = leitor.nextLine();
+
+        ItemAcervo itemDesejado = acervoDB.buscarPorTitulo(tituloDesejado);
+
+        if (itemDesejado == null) {
+            System.out.println("\n❌ Livro não encontrado");
+            return;
+        }
+
+        System.out.println("\n✅ Você escolheu: " + itemDesejado.getTitulo());
+        System.out.print("Confirmar empréstimo? (S/N): ");
+        String confirmacao = leitor.nextLine();
+
+        if (confirmacao.equalsIgnoreCase("S")) {
+            emprestimoService.pegarLivroEmprestado(usuarioLogado, itemDesejado);
+        } else {
+            System.out.println(CentralMenus.EMPRESTIMO_CANCELADO);
+        }
 
     }
 
