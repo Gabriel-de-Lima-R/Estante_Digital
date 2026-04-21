@@ -1,5 +1,6 @@
 package com.estantedigital.repository;
 
+import com.estantedigital.adapter.LocalDateAdapter;
 import com.estantedigital.model.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,17 +11,21 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioRepository {
     private static final String ARQUIVO_USUARIOS = "src/main/resources/usuarios.json";
     private Gson gson;
-    private static List<Usuario> listaDeUsuarios = new ArrayList<>();
+    private static List<Usuario> listaDeUsuarios;
     private long proximoId = 1;  // contador independente
 
     public UsuarioRepository() {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .create();
         this.listaDeUsuarios = new ArrayList<>();
         carregarDoArquivo();
     }
@@ -124,6 +129,18 @@ public class UsuarioRepository {
 
     public static boolean cpfExiste(String cpf) {
         return buscarPorCpf(cpf) != null;
+    }
+
+    public void atualizar(Usuario usuarioAtualizado) {
+        for (int i = 0; i < listaDeUsuarios.size(); i++) {
+            if (listaDeUsuarios.get(i).getId() == usuarioAtualizado.getId()) {
+                listaDeUsuarios.set(i, usuarioAtualizado);
+                salvarNoArquivo();
+                System.out.println("Usuário atualizado com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Usuário com ID " + usuarioAtualizado.getId() + " não encontrado.");
     }
 
 }

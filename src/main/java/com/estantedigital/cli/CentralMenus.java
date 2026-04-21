@@ -120,6 +120,18 @@ public class CentralMenus {
     ═══════════════════════════════════════════════════════════
     """;
 
+    // ==================== MENSAGENS DO FLUXO DE EMPRÉSTIMO ====================
+
+    public static final String EMPRESTIMO_TITULO = """
+    ═══════════════════════════════════════════════════════════
+                      📖 PEGAR ACERVO EMPRESTADO
+    ═══════════════════════════════════════════════════════════
+    """;
+
+    public static final String EMPRESTIMO_USUARIO_BLOQUEADO = "\n❌ Usuário bloqueado! Você não pode pegar livros emprestados.";
+    public static final String EMPRESTIMO_LIVRO_INDISPONIVEL = "\n❌ Livro indisponível! Aguarde 7 dias até devolverem!";
+    public static final String EMPRESTIMO_JA_POSSUI_LIVRO = "\n❌ Você já possui um livro emprestado. Devolva-o antes de pegar outro.";
+    public static final String EMPRESTIMO_CANCELADO = "\n❌ Empréstimo cancelado.";
 
 
 }

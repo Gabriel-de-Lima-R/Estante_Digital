@@ -4,9 +4,12 @@ import com.estantedigital.cli.CentralMenus;
 import com.estantedigital.model.ItemAcervo;
 import com.estantedigital.model.Usuario;
 import com.estantedigital.repository.AcervoRepository;
+import com.estantedigital.repository.EmprestimoRepository;
 import com.estantedigital.repository.UsuarioRepository;
 import com.estantedigital.service.ContaService;
+import com.estantedigital.service.EmprestimoService;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +19,13 @@ public class Main {
     public static Scanner leitor = new Scanner(System.in);
     public static UsuarioRepository usuarioDB = new UsuarioRepository();
     public static AcervoRepository acervoDB = new AcervoRepository();
+    public static EmprestimoRepository emprestimoDB = new EmprestimoRepository();
+    public static EmprestimoService emprestimoService = new EmprestimoService(emprestimoDB, usuarioDB, acervoDB);
 
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
         System.out.println("\n" + CentralMenus.SAUDACAO);
         menuInicial();
-
     }
 
     public static void menuInicial() {
@@ -127,6 +131,11 @@ public class Main {
                     aguarde();
                     break;
                 }
+                case "2", "02" -> {
+                    fluxoEmprestimo(usuarioAtual);
+                    aguarde();
+                    break;
+                }
                 case "4", "04" -> {
                     buscarLivro();
                     aguarde();
@@ -141,6 +150,30 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void fluxoEmprestimo(Usuario usuarioLogado) {
+        System.out.println(CentralMenus.EMPRESTIMO_TITULO);
+        System.out.print("📝 Digite o nome do acervo que deseja pegar: ");
+        String tituloDesejado = leitor.nextLine();
+
+        ItemAcervo itemDesejado = acervoDB.buscarPorTitulo(tituloDesejado);
+
+        if (itemDesejado == null) {
+            System.out.println("\n❌ Livro não encontrado");
+            return;
+        }
+
+        System.out.println("\n✅ Você escolheu: " + itemDesejado.getTitulo());
+        System.out.print("Confirmar empréstimo? (S/N): ");
+        String confirmacao = leitor.nextLine();
+
+        if (confirmacao.equalsIgnoreCase("S")) {
+            emprestimoService.pegarLivroEmprestado(usuarioLogado, itemDesejado);
+        } else {
+            System.out.println(CentralMenus.EMPRESTIMO_CANCELADO);
+        }
+
     }
 
     private static void buscarLivro() {

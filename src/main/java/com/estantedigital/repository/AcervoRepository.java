@@ -21,10 +21,7 @@ public class AcervoRepository {
             "src/main/resources/enciclopedias.json"
     };
     private Gson gson;
-    private static List<ItemAcervo> acervoTotal = new ArrayList<>();
-//    private static List<Livro> estanteLivros = new ArrayList<>();
-//    private static List<Revista> estanteRevistas = new ArrayList<>();
-//    private static List<Enciclopedia> estanteEnciclopedias = new ArrayList<>();
+    private static List<ItemAcervo> acervoTotal;
 
     public AcervoRepository() {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
@@ -151,5 +148,26 @@ public class AcervoRepository {
                 System.err.println("Tipo desconhecido: " + tipo);
                 return null;
         }
+    }
+
+    public void atualizar(ItemAcervo itemAtualizado) {
+        for (int i = 0; i < acervoTotal.size(); i++) {
+            if (acervoTotal.get(i).getId() == itemAtualizado.getId()) {
+                acervoTotal.set(i, itemAtualizado);
+                salvarSeparado();
+                System.out.println("Item atualizado com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Item com ID " + itemAtualizado.getId() + " não encontrado.");
+    }
+
+    public ItemAcervo buscarPorTitulo(String titulo) {
+        for (ItemAcervo item : acervoTotal) {
+            if (item.getTitulo().equalsIgnoreCase(titulo)) {
+                return item;
+            }
+        }
+        return null;
     }
 }
