@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+    // Todos os dados estão sendo persistidos em arquivos JSON, sendo carregados ao iniciar o programa e atualizados da maneira correta.
     public static Scanner leitor = new Scanner(System.in);
     public static UsuarioRepository usuarioDB = new UsuarioRepository();
     public static AcervoRepository acervoDB = new AcervoRepository();
