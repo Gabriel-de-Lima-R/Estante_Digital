@@ -68,7 +68,7 @@ public class ContaService {
         return dados;
     }
 
-    private static boolean validaSenha(String senha) {
+    public static boolean validaSenha(String senha) {
         if (senha == null) { return false; }
 
         if (senha.length() >= 4 && senha.matches(".*[A-Za-z].*") && senha.matches(".*\\d.*")) {
@@ -82,17 +82,33 @@ public class ContaService {
     public static boolean validaEmail(String email) {
         if (email == null) { return false; }
 
-        if (UsuarioRepository.emailExiste(email)) {
-            System.out.println("Esse email já existe!! Crie uma conta com novo email!!");
-            return false;
-        }
+        if (emailJaExiste(email)) { return false;}
 
-        if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
+        if (emailComDominioCerto(email)) {
             dados.put("email", email);
             return true;
         }
 
         System.out.println("Email inválido! Use @gmail.com ou @hotmail.com");
+        return false;
+    }
+
+    public static boolean emailJaExiste(String email) {
+        if (UsuarioRepository.emailExiste(email)) {
+            System.out.println("Esse email já existe!! Crie uma conta com novo email!!");
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean emailComDominioCerto(String email) {
+        String[] dominiosAceitos = {"@gmail.com", "@hotmail.com"};
+
+        for (String dominio : dominiosAceitos) {
+            if (email.endsWith(dominio)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -113,7 +129,7 @@ public class ContaService {
         // Remove caracteres não numéricos
         cpf = cpf.replaceAll("[^0-9]", "");
 
-        if (cpf.length() != 11) {
+        if (!cpfTem11Digitos(cpf)) {
             System.out.println("CPF inválido! Deve conter exatamente 11 números.");
             return false;
         }
@@ -124,6 +140,10 @@ public class ContaService {
         }
 
         return true;
+    }
+
+    public static boolean cpfTem11Digitos(String cpf) {
+        return cpf.length() == 11;
     }
 
     public static Usuario fazendoLogin(UsuarioRepository repository) {
