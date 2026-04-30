@@ -58,4 +58,8 @@ public class Emprestimo {
     public void setJustificativaAtraso(String justificativaAtraso) {
         this.justificativaAtraso = justificativaAtraso;
     }
+
+    public void setDataPrevistaDevolucao(LocalDate dataPrevistaDevolucao) {
+        this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+    }
 }
