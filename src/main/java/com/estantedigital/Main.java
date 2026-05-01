@@ -17,19 +17,21 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    // Todos os dados estão sendo persistidos em arquivos JSON, sendo carregados ao iniciar o programa e atualizados da maneira correta.
+    // Todos os dados estão a ser persistidos em arquivos JSON, sendo carregados ao iniciar o programa e atualizados da maneira correta.
     public static Scanner leitor = new Scanner(System.in);
     public static UsuarioRepository usuarioDB = new UsuarioRepository();
     public static AcervoRepository acervoDB = new AcervoRepository();
     public static EmprestimoRepository emprestimoDB = new EmprestimoRepository();
     public static EmprestimoService emprestimoService = new EmprestimoService(emprestimoDB, usuarioDB, acervoDB);
 
+    // coração do Main.java
     public static void main(String[] args) {
         System.out.println(CentralMenus.LOGO_ASCII);
         System.out.println("\n" + CentralMenus.SAUDACAO);
         menuInicial();
     }
 
+    // menu inicial
     public static void menuInicial() {
         boolean ativo = true;
 
@@ -62,6 +64,7 @@ public class Main {
         }
     }
 
+    // menu autenticação
     private static void menuAutenticacao() {
         boolean ativoAuten = true;
         while (ativoAuten) {
@@ -92,6 +95,7 @@ public class Main {
 
     }
 
+    // menu de login
     private static boolean menuLogin() {
         Usuario usuarioLogado = ContaService.fazendoLogin(usuarioDB);
 
@@ -103,6 +107,7 @@ public class Main {
         } else { return true; }
     }
 
+    // menu para criar conta
     private static void menuCriarConta() {
         Map<String, String> dadosUsuario = ContaService.criandoNovaConta();
 
@@ -118,6 +123,7 @@ public class Main {
 
     }
 
+    // menu de tela principal (já logada)
     private static void menuTelaPrincipal(Usuario usuarioAtual) {
         System.out.println("Seja Bem-vindo(a) " + usuarioAtual.getPrimeiroNome() + "!");
         boolean ativoPrinc = true;
@@ -159,6 +165,7 @@ public class Main {
         }
     }
 
+    // opção de emprestimo
     private static void fluxoEmprestimo(Usuario usuarioLogado) {
         System.out.println(CentralMenus.EMPRESTIMO_TITULO);
         System.out.print("📝 Digite o nome do acervo que deseja pegar: ");
@@ -183,11 +190,13 @@ public class Main {
 
     }
 
+    // opção de devolução
     private static void fluxoDevolver(Usuario usuarioLogado) {
         System.out.println(CentralMenus.DEVOLUCAO_TITULO);
         emprestimoService.devolverLivro(usuarioLogado);
     }
 
+    // opção para buscar livro
     private static void buscarLivro() {
         System.out.println(CentralMenus.BUSCAR_TITULO);
         System.out.print("📝 Digite o título ou parte do título para buscar: ");
@@ -218,6 +227,7 @@ public class Main {
 
     }
 
+    // opção que lista acervo disponível
     private static void acervoDisponivel() {
         List<ItemAcervo> todosItens = acervoDB.listarTodos();
 
@@ -237,12 +247,14 @@ public class Main {
         }
     }
 
+    // limpa o terminal
     public static void limparTerminal() {
         // apenas pula linhas para "fingir" a limpeza
         for (int i = 0; i < 35; i++) System.out.println();
         // por favor, no futuro, limpe da forma correta.
     }
 
+    // faz o usuário apertar ENTER para continuar
     public static void aguarde() {
         System.out.println("Precione ENTER para Continuar!");
         leitor.nextLine();
