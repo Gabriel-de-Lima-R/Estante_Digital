@@ -9,6 +9,7 @@ O **Estante Digital** é uma aplicação que substitui o sistema manual de papel
 
 **Problema resolvido:** Antes, o bibliotecário precisava ir até a estante física para verificar disponibilidade. Agora, o sistema mostra digitalmente todos os livros disponíveis e emprestados.
 
+---
 
 ## 🎯 Funcionalidades
 
@@ -24,6 +25,7 @@ O **Estante Digital** é uma aplicação que substitui o sistema manual de papel
 - 📦 Devolver livro (com controle de atraso)
 - 🚪 Logout
 
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -34,6 +36,7 @@ O **Estante Digital** é uma aplicação que substitui o sistema manual de papel
 | Gson | 2.10.1 | Leitura/escrita de JSON |
 | JUnit 5 | 5.10.2 | Testes unitários |
 
+---
 
 ## 📁 Estrutura do Projeto
 ```
@@ -51,41 +54,40 @@ Estate_Digital/                                 # Raiz do projeto
     |   ├── java/                                # Código Java
     |   │   └── com/estantedigital/              # Pacote base do projeto
     |   │       │
-    |   │       ├── Main.java                    # Ponto de entrada da aplicação (contém menu, loops, Scanner)
+    |   │       ├── Main.java                    # Ponto de entrada da aplicação
     |   │       │
     |   │       ├── adapter/                     # Adaptadores para bibliotecas externas
     |   │       │   └── LocalDateAdapter.java    # Converte LocalDate para JSON (Gson)
     |   │       │
     |   │       ├── cli/                         # Interface com o usuário (CLI)
-    |   │       │   ├── CentralMenus.java        # Constantes com textos, menus, ícones e artes ASCII
-    |   │       │   └── TerminalUtils.java       # Utilitários: limpar tela, aguardar ENTER
+    |   │       │   └── CentralMenus.java        # Constantes com artes ASCII
     |   │       │
     |   │       ├── dto/                         # Objetos de Transferência de Dados
-    |   │       │   └── ItemAcervoDTO.java       # Leitura bruta do JSON (antes de converter para herança)
+    |   │       │   └── ItemAcervoDTO.java       # Leitura bruta do JSON 
     |   │       │
     |   │       ├── model/                       # Entidades/Modelos do domínio
-    |   │       │   ├── Emprestimo.java          # Dados do empréstimo (datas, usuário, item, justificativa)
+    |   │       │   ├── Emprestimo.java          # Dados do empréstimo
     |   │       │   ├── Enciclopedia.java        # Subclasse de ItemAcervo para enciclopédias
-    |   │       │   ├── ItemAcervo.java          # Classe pai (abstrata) do acervo (id, título, tipo, status)
-    |   │       │   ├── Livro.java               # Subclasse de ItemAcervo para livros (autor, gênero, ano)
-    |   │       │   ├── Revista.java             # Subclasse de ItemAcervo para revistas (editora, gênero, ano)
+    |   │       │   ├── ItemAcervo.java          # Classe pai (abstrata) do acervo
+    |   │       │   ├── Livro.java               # Subclasse de ItemAcervo para livros
+    |   │       │   ├── Revista.java             # Subclasse de ItemAcervo para revistas
     |   │       │   └── Usuario.java             # Dados do usuário (nome, CPF, email, senha, bloqueio)
     |   │       │
     |   │       ├── repository/                  # Camada de persistência (JSON)
-    |   │       │   ├── AcervoRepository.java    # Gerencia livros.json, revistas.json, enciclopedias.json
+    |   │       │   ├── AcervoRepository.java    # Gerencia arquivos JSON
     |   │       │   ├── EmprestimoRepository.java # Gerencia emprestimos.json (CRUD de empréstimos)
     |   │       │   └── UsuarioRepository.java   # Gerencia usuarios.json (CRUD de usuários)
     |   │       │
     |   │       └── service/                     # Regras de negócio
-    |   │           ├── ContaService.java        # Lógica de cadastro, login, validações (email, CPF, senha)
-    |   │           └── EmprestimoService.java   # Lógica de empréstimo e devolução (validações, bloqueio)
+    |   │           ├── ContaService.java        # Lógica de cadastro, login e validações
+    |   │           └── EmprestimoService.java   # Lógica de empréstimo e devolução
     |   │
     |   └── resources/                           # Recursos do projeto (arquivos JSON)
-    |       ├── livros.json                      # Acervo de livros (id, título, autor, gênero, status, ano)
-    |       ├── revistas.json                    # Acervo de revistas (id, título, editora, gênero, status, ano)
-    |       ├── enciclopedias.json               # Acervo de enciclopédias (id, título, editora, idioma, volumes, edição)
-    |       ├── usuarios.json                    # Usuários cadastrados (id, nome, CPF, email, senha, bloqueio)
-    |       └── emprestimos.json                 # Empréstimos registrados (id, usuário, item, datas, justificativa)
+    |       ├── livros.json                      # Acervo de livros 
+    |       ├── revistas.json                    # Acervo de revistas
+    |       ├── enciclopedias.json               # Acervo de enciclopédias
+    |       ├── usuarios.json                    # Usuários cadastrados
+    |       └── emprestimos.json                 # Empréstimos registrados
     │
     └── test/                                    # Testes unitários
         └── java/                                # Código de teste
@@ -97,9 +99,9 @@ Estate_Digital/                                 # Raiz do projeto
                 │   └── EmprestimoTest.java      # Testa isAtrasado(), datas, construtores
                 │
                 └── service/                     # Testes das regras de negócio
-                    └── EmprestimoServiceTest.java # Testa empréstimo (usuário bloqueado, livro indisponível, etc.)
-```
+                    └── EmprestimoServiceTest.java # Testa empréstimo
 
+---
 
 ## 🚀 Como Executar o Projeto
 
@@ -123,8 +125,9 @@ mvn clean compile
 mvn exec:java -Dexec.mainClass="com.estantedigital.Main"
 ```
 
+---
 
-# 🏠 Tela Inicial
+## 🏠 Tela Inicial
 ```
 ========================================
             ESTANTE DIGITAL
@@ -138,10 +141,11 @@ Bem-vindo à Biblioteca Municipal!
 Escolha uma opção: _
 ```
 
+---
 
-# 📊 Regras de Negócio Implementadas
+## 📊 Regras de Negócio Implementadas
 
-## RF01 - Tela Inicial (Não Logado)
+### RF01 - Tela Inicial (Não Logado)
 
 | Código | Descrição |
 |--------|-----------|
@@ -149,7 +153,7 @@ Escolha uma opção: _
 | RF01.2 | Fazer login / Criar conta - Navega para tela de autenticação |
 | RF01.3 | Fechar programa - Encerra a aplicação |
 
-## RF02 - Tela de Autenticação
+### RF02 - Tela de Autenticação
 
 | Código | Descrição |
 |--------|-----------|
@@ -157,7 +161,7 @@ Escolha uma opção: _
 | RF02.2 | Criar conta - Coleta dados com validações rigorosas |
 | RF02.3 | Voltar - Retorna ao menu inicial |
 
-### RF02.2 - Validações de Cadastro
+#### RF02.2 - Validações de Cadastro
 
 | Campo | Regra | Mensagem de erro |
 |-------|-------|------------------|
@@ -168,7 +172,7 @@ Escolha uma opção: _
 | CPF | Não pode duplicar | "CPF já cadastrado." |
 | Senha | Mínimo 4 caracteres, letra + número | "Senha deve ter pelo menos 4 caracteres, contendo letra e número." |
 
-## RF03 - Menu Principal (Logado)
+### RF03 - Menu Principal (Logado)
 
 | Código | Descrição |
 |--------|-----------|
@@ -178,7 +182,7 @@ Escolha uma opção: _
 | RF03.4 | Buscar por livro - Busca por parte do título (case insensitive) |
 | RF03.5 | Sair - Encerra sessão e retorna ao menu inicial |
 
-## RN - Regras de Negócio Específicas
+### RN - Regras de Negócio Específicas
 
 | Código | Descrição |
 |--------|-----------|
@@ -190,6 +194,7 @@ Escolha uma opção: _
 | RN06 | Acervo composto por livros, revistas e enciclopédias |
 | RN07 | Dados do acervo vindos de arquivos JSON separados |
 
+---
 
 ## 🧪 Testes
 
