@@ -113,7 +113,7 @@ Estate_Digital/                                 # Raiz do projeto
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/Gabriel-de-Lima/estante-digital.git
+git clone https://github.com/Gabriel-de-Lima-R/Estante_Digital.git
 
 # Entrar no diretório
 cd estante-digital
